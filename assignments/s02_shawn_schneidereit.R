@@ -153,13 +153,15 @@ mask_b <- calc(BQA, fun = b_pixels)
 plot(mask_a)
 plot(mask_b)
 
+
+
 raster_BOA_mask_A <-  writeRaster(mask_a, "data/gcg_eo_s02_sub/SR/LC081890252014071601T1-SC20171024094741/LC08_L1TP_189025_20140716_20170421_01_T1_subset_sr_BOA_mask_A.tif",
                                  format = "GTiff", overwrite = T)
 raster_BOA_mask_B <-  writeRaster(mask_b, "data/gcg_eo_s02_sub/SR/LC081890252014071601T1-SC20171024094741/LC08_L1TP_189025_20140716_20170421_01_T1_subset_sr_BOA_mask_B.tif",
                                  format = "GTiff", overwrite = T)
 
-# After some basic visual assessment and zooming into some particukarly cloudy patches it seems like mask A is sufficient 
-# at masking clouds. I the select regions I zoomed into, it seemed like mask B masked regions of the image that did 
+# After some basic visual assessment and zooming into some particularly cloudy patches it seems like mask A is sufficient 
+# at masking clouds. In the select regions I zoomed into, it seemed like mask B masked regions of the image that did 
 # not appear to be clouds in the RBG image. 
 
 
@@ -169,7 +171,7 @@ raster_BOA_mask_B <-  writeRaster(mask_b, "data/gcg_eo_s02_sub/SR/LC081890252014
 
 BOA_masked <- mask(data_BOA, 
                    mask      = raster_BOA_mask_A,
-                   maskvalue = T, # cuts out masked region from image
+                   maskvalue = 1, # cuts out masked region from image
                    filename  = "data/gcg_eo_s02_sub/SR/LC081890252014071601T1-SC20171024094741/LC08_L1TP_189025_20140716_20170421_01_T1_subset_sr_BOA_masked.tif",
                    format    = "GTiff", 
                    overwrite = T)
