@@ -242,9 +242,11 @@ ggplot(spectra.df, aes(x=variable, y=value, color=classID)) +
 # Do the Tasseled Cap components allow for discriminating your target classes?
 
 # Yes the Tasseled Cap components allow for discriminating your target classes. 
-# Especially class for has very distinct spectral features, as well as class 3.
+# Especially class four has very distinct spectral features, as well as class 3 (not quite as pronounced).
 # When differentiating deciduous and mixed forest plots, the tasseled cap components 
-# do less well at distinguishing  between groups. 
+# do less well at distinguishing between groups, likely due to more physilogical 
+# features being shared, as well as increased classification errors on our end
+# (especially for the mixed forest group). 
 
 #Which classes are likely difficult to separate?
 
