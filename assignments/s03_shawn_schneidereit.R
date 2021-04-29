@@ -55,12 +55,12 @@ evi[evi<0] = 0
 
 plot(evi)
 
-stack_ndvi <-  writeRaster(tcc_stack, "~/Documents/humbolt/semester_02/earth_observation/data/gcg_eo_s03/sr_data/LC081890252014031001T1-SC20170927101754/LC081890252014031001T1-SC20170927101754_ndvi",
-                          format = "GTiff", 
-                          datatype = "INT2S",
-                          overwrite = T)
+stack_ndvi <-  writeRaster(ndvi, "~/Documents/humbolt/semester_02/earth_observation/data/gcg_eo_s03/sr_data/LC081890252014031001T1-SC20170927101754/LC081890252014031001T1-SC20170927101754_ndvi",
+                           format = "GTiff", 
+                           datatype = "INT2S",
+                           overwrite = T)
 
-stack_evi <-  writeRaster(tcc_stack, "~/Documents/humbolt/semester_02/earth_observation/data/gcg_eo_s03/sr_data/LC081890252014031001T1-SC20170927101754/LC081890252014031001T1-SC20170927101754_evi",
+stack_evi <-  writeRaster(evi, "~/Documents/humbolt/semester_02/earth_observation/data/gcg_eo_s03/sr_data/LC081890252014031001T1-SC20170927101754/LC081890252014031001T1-SC20170927101754_evi",
                           format = "GTiff", 
                           datatype = "INT2S",
                           overwrite = T)
@@ -78,27 +78,27 @@ tcc <- matrix(c( 0.2043,  0.4158,  0.5524, 0.5741,  0.3124,  0.2303,
 print(tcc)
 
 brightness <- stack_march[[1]] * tcc[1,1] + 
-              stack_march[[2]] * tcc[2,1] + 
-              stack_march[[3]] * tcc[3,1] + 
-              stack_march[[4]] * tcc[4,1] + 
-              stack_march[[5]] * tcc[5,1] + 
-              stack_march[[6]] * tcc[6,1]
+  stack_march[[2]] * tcc[2,1] + 
+  stack_march[[3]] * tcc[3,1] + 
+  stack_march[[4]] * tcc[4,1] + 
+  stack_march[[5]] * tcc[5,1] + 
+  stack_march[[6]] * tcc[6,1]
 
 
 greenness <- stack_march[[1]] * tcc[1,2] + 
-             stack_march[[2]] * tcc[2,2] + 
-             stack_march[[3]] * tcc[3,2] + 
-             stack_march[[4]] * tcc[4,2] + 
-             stack_march[[5]] * tcc[5,2] + 
-             stack_march[[6]] * tcc[6,2]
+  stack_march[[2]] * tcc[2,2] + 
+  stack_march[[3]] * tcc[3,2] + 
+  stack_march[[4]] * tcc[4,2] + 
+  stack_march[[5]] * tcc[5,2] + 
+  stack_march[[6]] * tcc[6,2]
 
 
 wetness <- stack_march[[1]] * tcc[1,3] + 
-           stack_march[[2]] * tcc[2,3] + 
-           stack_march[[3]] * tcc[3,3] + 
-           stack_march[[4]] * tcc[4,3] + 
-           stack_march[[5]] * tcc[5,3] + 
-           stack_march[[6]] * tcc[6,3]
+  stack_march[[2]] * tcc[2,3] + 
+  stack_march[[3]] * tcc[3,3] + 
+  stack_march[[4]] * tcc[4,3] + 
+  stack_march[[5]] * tcc[5,3] + 
+  stack_march[[6]] * tcc[6,3]
 
 tcc_stack <- stack(brightness, greenness, wetness)
 
@@ -120,6 +120,10 @@ stack_tcc <-  writeRaster(tcc_stack, "~/Documents/humbolt/semester_02/earth_obse
 #############################################################################
 
 
+#Which genera are dominant in the study area?
+#Ash, Beech, Fir, Spruce
+
+
 ##############################################################################
 # 2) Collect training data
 #############################################################################
@@ -128,3 +132,70 @@ stack_tcc <-  writeRaster(tcc_stack, "~/Documents/humbolt/semester_02/earth_obse
 ##############################################################################
 # 3) Explore your training data
 #############################################################################
+
+####################################################################
+# Load required packages
+library(raster)
+library(rgdal)
+library(hexbin)
+library(ggplot2)
+library(reshape2)
+
+
+####################################################################
+### Get the data ready
+
+# Read march image as stack and rename spectral bands
+img <- stack('data/gcg_eo_s03/sr_data/LC081890252014031001T1-SC20170927101754/LC081890252014031001T1-SC20170927101754_sr_masked_crop.tif')
+
+names(img) <- c("blue", "green", "red", "nir", "swir1", "swir2")
+
+# Read training points, the following code assumes that it contains only the class attribute
+# in readOGR, dsn specifies the path to the folder containing the file (may not end with /), 
+# layer specifies the name of the shapefile without extension (.shp)
+train <- readOGR(dsn='course.dir', layer='training_points')
+
+# Extract image values at training point locations
+train.sr <- extract(img, train, sp=T)
+
+# Convert to data.frame and convert classID into factor
+train.df <- as.data.frame(train.sr)
+train.df$classID <- as.factor(train.df$classID)
+
+####################################################################
+### Create boxplots of reflectance grouped by land cover class
+
+# Melt dataframe containing point id, classID, and 6 spectral bands
+spectra.df <- melt(train.df, id.vars='classID', 
+                   measure.vars=c('blue', 'green', 'red', 'nir', 'swir1', 'swir2'))
+
+# Create boxplots of spectral bands per class
+ggplot(spectra.df, aes(x=variable, y=value, color=classID)) +
+  geom_boxplot() +
+  theme_bw()
+
+####################################################################
+### Create 2D scatterplot of image data and locations of training points
+
+# Convert image to data.frame and remove missing values
+sr.march.val <- data.frame(getValues(img))
+sr.march.val <- na.omit(sr.march.val)
+
+# Randomly sub-sample 100,000 to speed up visualisation
+sr.march.val <- sr.march.val[sample(nrow(sr.march.val), 100000),]  
+
+# Specify which bands to use for the x and y axis of the plot
+xband <- "red"
+yband <- "nir"
+
+# Create plot of band value density and training data
+ggplot() + 
+  geom_hex(data = sr.march.val, aes(x = get(xband), y = get(yband)), bins = 100) + 
+  geom_point(data = train.df, aes(x = get(xband), y = get(yband), color=classID, shape=classID), 
+             size = 2, inherit.aes = FALSE, alpha=1) + 
+  
+  scale_fill_gradientn(colours=c("black","white"), na.value=NA) + 
+  scale_x_continuous(xband, limits=c(-10, quantile(sr.march.val[xband], 0.98, na.rm=T))) +
+  scale_y_continuous(yband, limits=c(-10, quantile(sr.march.val[yband], 0.98, na.rm=T))) +
+  scale_color_manual(values=c("red", "blue", "green", "purple")) +
+  theme_bw()

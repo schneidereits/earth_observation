@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html  lang="en-US">
+<head id="Head"><meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<meta name="REVISIT-AFTER" content="1 DAYS" />
+<meta name="RATING" content="GENERAL" />
+<meta name="RESOURCE-TYPE" content="DOCUMENT" />
+<meta content="text/javascript" http-equiv="Content-Script-Type" />
+<meta content="text/css" http-equiv="Content-Style-Type" />
+<meta name="google-site-verification" content="81BBlH8ogYZw1jerr6w0rJtiofBdLLQPTlep8uyFPmA" />
+<meta name="google-site-verification" content="jDCWiAESaNOX7lqFYKqZVJVRCl7_j2YOKi2Ph2V92_U" />
+<title>
+	 The Many Band Combinations of Landsat 8 - L3Harris Geospatial
+</title><meta id="MetaDescription" name="DESCRIPTION" content="Blog provides examples of how various band combinations can be used to visualize Landsat 8 images by making different features stand out." /><meta id="MetaKeywords" name="KEYWORDS" content="exelis visual information system, exelis vis, ENVI, Image Analysis, landsat 8, band combinations, multispectral imagery, thermal infrared, SWIR" /><meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" /><link href="/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/Resources/Search/SearchSkinObjectPreview.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/Portals/_default/Skins/20073-UnlimitedColorsPack-055/skin.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/DesktopModules/EasyDNNnews/Templates/_default/Galore/Galore.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/DesktopModules/EasyDNNnews/Templates/_default/NewsOne/NewsOne.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/Portals/_default/Skins/20073-UnlimitedColorsPack-055/InsidePage.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/Portals/_default/Containers/20073-UnlimitedColorsPack-055/container.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/Portals/0/portal.css?cdv=792" type="text/css" rel="stylesheet"/><link href="https://fonts.googleapis.com/css?family=Raleway&amp;cdv=792" type="text/css" rel="stylesheet"/><link href="/DesktopModules/DNNGo_xPlugin/Resource/css/jquery.mmenu.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/DesktopModules/EasyDNNNews/static/rateit/css/rateit.css?cdv=792" type="text/css" rel="stylesheet"/><link href="/DesktopModules/EasyDNNNews/static/common/common.css?cdv=792" type="text/css" rel="stylesheet"/><script src="/DesktopModules/EasyDNNNews/static/eds_jquery/eds_jq.js?cdv=792" type="text/javascript"></script><script src="/Resources/libraries/jQuery/03_05_01/jquery.js?cdv=792" type="text/javascript"></script><script src="/Resources/libraries/jQuery-Migrate/03_02_00/jquery-migrate.js?cdv=792" type="text/javascript"></script><!--[if LT IE 9]><link id="IE6Minus" rel="stylesheet" type="text/css" href="/Portals/_default/Skins/20073-UnlimitedColorsPack-055/ie.css" /><![endif]--><link rel='SHORTCUT ICON' href='/Portals/0/favicon.ico?ver=6VZ-JT_cHHtNGG5U5Tim0Q%3d%3d' type='image/x-icon' /><meta name="eds__GmapsInitData" content="{&quot;instanceGlobal&quot;:&quot;EasyDnnSolutions1_1_instance&quot;,&quot;google&quot;:{&quot;maps&quot;:{&quot;api&quot;:{&quot;key&quot;:&quot;&quot;,&quot;libraries&quot;:[&quot;geometry&quot;,&quot;places&quot;]}}}}" /><meta property="og:site_name" content="L3Harris Geospatial" />
+<meta property="og:title" content="The Many Band Combinations of Landsat 8" />
+<meta property="og:description" content="Landsat 8 is the most recent satellite in the Landsat program. The data quality (signal-to-noise ratio) and radiometric quantization (12-bits) of the Landsat 8 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) are higher than previous Landsat instruments (8-bit for TM and ETM+). Since it's launch on February 11, 2013, Landsat 8 has been providing some truly stunning images of the earth's surface. Beyond their beauty, these images are packed with information which can be..." />
+<meta property="og:url" content="https://www.l3harrisgeospatial.com/Learn/Blogs/Blog-Details/ArtMID/10198/ArticleID/15691/The-Many-Band-Combinations-of-Landsat-8" />
+<meta property="og:type" content="article" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Many Band Combinations of Landsat 8" />
+<meta name="twitter:description" content="Landsat 8 is the most recent satellite in the Landsat program. The data quality (signal-to-noise ratio) and radiometric quantization (12-bits) of the Landsat 8 Operational Land Imager (OLI) and..." />
+
+<script type="application/ld+json">{
+"@context": "http://schema.org",
+"@type": "NewsArticle",
+"mainEntityOfPage": {
+	"@type": "WebPage",
+	"@id": "https://www.l3harrisgeospatial.com/Learn/Blogs/Blog-Details/ArtMID/10198/ArticleID/15691/The-Many-Band-Combinations-of-Landsat-8"
+	},
+	"headline": "The Many Band Combinations of Landsat 8",
+	"image": {
+		"@type": "ImageObject",
+		"url": ""
+	},
+	"datePublished": "2015-01-29T10:30:00.0000000",
+	"dateModified": "2017-03-06T09:18:24.7600000",
+	"author": {
+	"@type": "Person",
+	"name": "Joe Peters"
+	},
+	"publisher": {
+	"@type": "Organization",
+	"name": "L3Harris Geospatial",
+	"logo": {
+		"@type": "ImageObject",
+		"url": "https://www.l3harrisgeospatial.com/Portals/0/L3Harris.png?ver=-njqzb3ltfCSqr3zO9LiYg%3d%3d"
+	}
+	},
+	"description": ""
+}
+</script><meta name="viewport" content="width=device-width,height=device-height, minimum-scale=1.0, maximum-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /></head>
+<body id="Body">
+    
+    <form method="post" action="/Learn/Blogs/Blog-Details/ArtMID/10198/ArticleID/15691/The-Many-Band-Combinations-of-Landsat-8" id="Form" enctype="multipart/form-data">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['Form'];
+if (!theForm) {
+    theForm = document.Form;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV23UjAn9GEzda_CiFXFknIErqqgSmCWxnJns5WX6ON_JtFuCIk1&amp;t=637290562998988531" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=NJmAwtEo3IpllVwFgAbKH4_AF02vJvrMoNWNDe6OliJsL1iPsaZ8b8EVJytdiz8i4WzkArStkwn2SAE5dMKpP8IsZJVcF2tCLGSLK3K3hM2gOzAi4Tc8QhaVSgAnII915D_eLQ2&amp;t=2a797f5c" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=dwY9oWetJoJEMApMBMC_BMGUFKpzOROBopfF6arewzjri3hFFM51hNg4871nkosIvddQL2HSKajVlIhb5cJzFP-9bYC4ICiYV8b72TvaeIDncrAWefOeYPUnJeRZEOFIzkCQMHGqXc9mDX_A0&amp;t=2a797f5c" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="CA0B0334" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="1EpKoX0ZabZfFwz3tDr9OgvdnTeL40pXP/lB9PDav7aYH8Q0ckdkUxauku+g2PgE51Rip0dKy7oVF83qZIyW9MSKdAr8tumEiqOg6zu4p2m6s4HEz7qN+c9f72/Q6jKHvgaOPMcUgROnXRx89JXqWKtapxGbJi4FAX3HJ7mILaHKRH3xXqq0EvRfNhvny5a/0tCSaw==" />
+</div><script src="/js/dnn.js?cdv=792" type="text/javascript"></script><script src="/js/dnncore.js?cdv=792" type="text/javascript"></script><script src="/DesktopModules/DNNGo_xPlugin/Resource/js/dnngo-xplugin.js?cdv=792" type="text/javascript"></script><script src="/Resources/Search/SearchSkinObjectPreview.js?cdv=792" type="text/javascript"></script><script src="/js/dnn.servicesframework.js?cdv=792" type="text/javascript"></script><script src="/DesktopModules/EasyDNNNews/static/rateit/js/jquery.rateit_2.2.js?cdv=792" type="text/javascript"></script><script src="/DesktopModules/EasyDNNNews/js/jquery.cookie_2.2.js?cdv=792" type="text/javascript"></script><script src="/DesktopModules/EasyDNNNews/static/fluidvids/fluidvids_custom.min.js?cdv=792" type="text/javascript"></script><script src="/DesktopModules/EasyDNNNews/static/EasyDnnSolutions/EasyDnnSolutions_1.1_2.2.js?cdv=792" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager', 'Form', ['tdnn$ctr10198$ViewEasyDNNNewsMain$ctl00$upPanelComments','dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_upPanelComments'], [], [], 90, '');
+//]]>
+</script>
+
+        
+        
+        
+
+ 
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" href="/Portals/_default/Skins/20073-UnlimitedColorsPack-055/search.css"type="text/css" /> 
+
+<div class="dnngo-main full ltr" >   <div id="dnn_wrapper">
+    <div class="HeaderBreadcrumb_bg" id="Breadcrumb_style_4">
+        <!-- header -->
+        
+<header class="header_bg roll_menu    " data-top="250">
+  <div class="hidden-xs hidden-sm headerBox " id="header1">
+    <div class="shade"></div>
+    <div class="dnn_layout   boxed">
+      <div id="megamenuWidthBox" style="width:100%; clear:both; overflow:hidden;"></div>
+      <div class="head_mid  clearfix">
+        <div class="header-bottom">
+          <div class="header-left">
+            <div class="dnn_logo  ">
+            
+                          <div class="Logobox  ">
+                <a id="dnn_dnnLOGO_hypLogo" title="L3Harris Geospatial" href="https://www.l3harrisgeospatial.com/"><img id="dnn_dnnLOGO_imgLogo" src="/Portals/0/L3Harris.png?ver=-njqzb3ltfCSqr3zO9LiYg%3d%3d" alt="L3Harris Geospatial" style="border-width:0px;" /></a>
+              </div>
+                        <div class="FixedLogoPane  ">
+                            <a id="dnn_dnnLOGOFX_hypLogo" title="L3Harris Geospatial" href="https://www.l3harrisgeospatial.com/"><img id="dnn_dnnLOGOFX_imgLogo" src="/Portals/0/L3Harris.png?ver=-njqzb3ltfCSqr3zO9LiYg%3d%3d" alt="L3Harris Geospatial" style="border-width:0px;" /></a>
+                        </div>
+            
+            </div>
+          </div>
+          <div class="header-right" style="float: right;margin-top: 18px;/* top: 50px; *//* bottom: 25px; *//* line-height: 25px; */letter-spacing: 0px;/* padding-bottom: 8px; */">
+          <div style="font-family: 'IBM Plex Sans';font-weight: 500;color: #A2A2A2;font-size: 16px;border-bottom: #EDEDED solid 1px;padding-bottom: 6px;">L3HARRIS GEOSPATIAL</div>
+            <nav class="nav_box clearfix HoverStyle_1 ">
+              <div class="dnn_menu">
+                <div id="dnngo_megamenu" class="IHide-sm IHide-md IHide-lg">
+                  
+    <div class="dnngo_gomenu" id="dnngo_megamenu728abb32ab">
+      
+         <ul class="primary_structure">
+ <li class="dir ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions"   title="Geospatial Industry Solutions | Geospatial Services | L3Harris Geospatial"  ><span>Industry Solutions</span></a>
+ <div class="dnngo_menuslide">
+ <ul class="dnngo_slide_menu ">
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Academic"   title="Academic ENVI and IDL Software | Geospatial Software for Students & Teachers"  ><span>Academic</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Defense-Intelligence"   title="Defense Geospatial Intelligence | Defense Intelligence Geospatial Software"  ><span>Defense & Intelligence</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Fed-Civil"   title="Geospatial Solutions for Federal Civil Services | Fed/Civil Geospatial Software"  ><span>Fed/Civil</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Utilities"   title="Utility Management Solutions | Geospatial Asset Management"  ><span>Utilities</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Solutions-Delivery"   title="Solutions Delivery - Geospatial Project Management | L3Harris Geospatial"  ><span>Solutions Delivery</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Transportation"   title="Transportation Technology | Geospatial Software for Transportation Management"  ><span>Transportation</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Precision-Agriculture"   title="Precision Agriculture Technology - Crop Management Software"  ><span>Precision Agriculture</span></a>
+</li>
+</ul>
+</div>
+</li>
+ <li class="dir ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology"   title="Geospatial Software & Technology | L3Harris Geospatial"  ><span>Software & Technology</span></a>
+ <div class="dnngo_menuslide">
+ <ul class="dnngo_slide_menu ">
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/Amplify"   title="Amplify"  ><span>Amplify</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/Enterprise-Solutions"   title="Enterprise Solutions | Advanced Geospatial Solutions | L3Harris Geospatial"  ><span>Enterprise Solutions</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/ENVI"   title="ENVI - The Leading Geospatial Image Analysis Software"  ><span>ENVI</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/ENVI-Deep-Learning"   title="ENVI Deep Learning - Automate Analytics With Deep Learning"  ><span>ENVI Deep Learning</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/ENVI-SARscape"   title="ENVI SARscape - SAR Data Processing Software"  ><span>ENVI SARscape</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/Helios"   title="Helios - Hyperlocal Weather Technology - Road Weather Conditions"  ><span>Helios</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/IDL"   title="IDL Software - Interactive Data Visualization Solution"  ><span>IDL</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Software-Technology/Jagwire"   title="Jagwire - Geospatial Data Management Software | L3Harris Geospatial"  ><span>Jagwire</span></a>
+</li>
+</ul>
+</div>
+</li>
+ <li class="dir ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery"   title="Geospatial Data | Commercial Satellite Imagery Services | L3Harris Geospatial"  ><span>Data & Imagery</span></a>
+ <div class="dnngo_menuslide">
+ <ul class="dnngo_slide_menu ">
+ <li class="dir ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery"   title="Satellite Imagery Providers - Commercial Satellite Imagery "  ><span>Satellite Imagery</span></a>
+ <div class="dnngo_submenu">
+ <ul>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/High-Resolution"   title="High Resolution Satellite Imagery | High-Res Imagery | L3Harris Geospatial"  ><span>High Resolution</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/Satellite-Subscription-Services"   title="Satellite Subscription Services "  ><span>Satellite Subscription Services</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/Medium-Resolution"   title="Medium Resolution Satellite Imagery | Medium-Res Imagery | L3Harris Geospatial"  ><span>Medium Resolution</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/Low-Resolution"   title="Low Resolution Satellite Imagery | Low-Res Imagery | L3Harris Geospatial"  ><span>Low Resolution</span></a>
+</li>
+</ul>
+</div>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Elevation-Data"   title="Elevation Data & Digital Elevation Models | Terrain Data | L3Harris Geospatial"  ><span>Elevation Data</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Aerial-Imagery"   title="Aerial Imagery & High Resolution Aerial Maps | Hexagon Imagery Program"  ><span>Aerial Imagery</span></a>
+</li>
+ <li class="dir ">
+<a href="javascript:;"   title="Services"  ><span>Services</span></a>
+ <div class="dnngo_submenu">
+ <ul>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Services/Aerial-Survey-Mapping-Services"   title="Aerial & Topographic Mapping Services | L3Harris Geospatial"  ><span>Aerial Survey Mapping Services</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Data-Imagery/Services/Satellite-Imagery-Services"   title="Satellite Imagery Services | Satellite Mapping Services | L3Harris Geospatial"  ><span>Satellite Imagery Services</span></a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+ <li class="dir current">
+<a href="https://www.l3harrisgeospatial.com/Learn"   title="Geospatial Information | L3Harris Geospatial"  ><span>Learn</span></a>
+ <div class="dnngo_menuslide">
+ <ul class="dnngo_slide_menu ">
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Learn/Case-Studies"   title="Case Studies - Geospatial Information | L3Harris Geospatial"  ><span>Case Studies</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Learn/Videos"   title="Videos - Geospatial Information | L3Harris Geospatial"  ><span>Videos</span></a>
+</li>
+ <li class=" subcurrent">
+<a href="https://www.l3harrisgeospatial.com/Learn/Blogs"   title="Blogs - Geospatial Information | L3Harris Geospatial"  ><span>Blogs</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Learn/Brochures"   title="Brochures - Geospatial Information | L3Harris Geospatial"  ><span>Brochures</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Learn/Training"   title="Training - Geospatial Information | L3Harris Geospatial"  ><span>Training</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Learn/Whitepapers"   title="Whitepapers - Geospatial Information | L3Harris Geospatial"  ><span>Whitepapers</span></a>
+</li>
+</ul>
+</div>
+</li>
+ <li class="dir ">
+<a href="https://www.l3harrisgeospatial.com/Support"   title="Support - ENVI & IDL | L3Harris Geospatial"  ><span>Support</span></a>
+ <div class="dnngo_menuslide">
+ <ul class="dnngo_slide_menu ">
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Support/Forums"   title="Help Forums - ENVI & IDL | L3Harris Geospatial"  ><span>Forums</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/My-Account/Extensions"   title="Extensions"  ><span>Extensions</span></a>
+</li>
+ <li class="dir ">
+<a href="https://www.l3harrisgeospatial.com/Support/Self-Help-Tools"   title="Self Help Tools - ENVI & IDL| L3Harris Geospatial"  ><span>Self Help Tools</span></a>
+ <div class="dnngo_submenu">
+ <ul>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/docs/home.html"   title=" Documentation Center  - Support | Harris Geospatial"  ><span>Documentation Center</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Support/Self-Help-Tools/Help-Articles"   title="Help Articles - ENVI & IDL | L3Harris Geospatial"  ><span>Help Articles</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Support/Self-Help-Tools/Tutorials"   title="Tutorials - ENVI | L3Harris Geospatial"  ><span>Tutorials</span></a>
+</li>
+</ul>
+</div>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Support/Maintenance"   title="Product Updates"  ><span>Product Updates</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Support/Technical-Support"   title="Technical Support - ENVI & IDL | L3Harris Geospatial"  ><span>Technical Support</span></a>
+</li>
+</ul>
+</div>
+</li>
+ <li class="dir ">
+<a href="https://www.l3harrisgeospatial.com/Company"   title="Company | L3Harris Geospatial"  ><span>Company</span></a>
+ <div class="dnngo_menuslide">
+ <ul class="dnngo_slide_menu ">
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/About-L3Harris-Geospatial"   title="About Us | L3Harris Geospatial"  ><span>About L3Harris Geospatial</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/Core-Technology"   title="Core Technologies | L3Harris Geospatial"  ><span>Core Technology</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/Careers"   title="Careers | L3Harris Geospatial"  ><span>Careers</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/Partners"   title="Partnerships | L3Harris Geospatial"  ><span>Partners</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/News"   title="News & Press Room | L3Harris Geospatial"  ><span>News</span></a>
+</li>
+ <li class="dir ">
+<a href="javascript:;"   title="Geospatial Events | Harris Geospatial"  ><span>Events</span></a>
+ <div class="dnngo_submenu">
+ <ul>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/Events/Tradeshows"   title="Events - Tradeshows | L3Harris Geospatial"  ><span>Tradeshows</span></a>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/Events/Webinar"   title="Events - Webinars | L3Harris Geospatial"  ><span>Webinar</span></a>
+</li>
+</ul>
+</div>
+</li>
+ <li class=" ">
+<a href="https://www.l3harrisgeospatial.com/Company/Contact-Us"   title="Contact Us | L3Harris Geospatial"  ><span>Contact Us</span></a>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+
+      
+    </div>
+    
+    
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $("#dnngo_megamenu728abb32ab").dnngomegamenu({
+            slide_speed: 200,
+            delay_disappear: 500,
+            popUp: "vertical",//level
+			delay_show:150,
+			direction:"ltr",//rtl ltr
+			megamenuwidth:"box",//full box
+			WidthBoxClassName:".dnn_layout"
+        });
+    });
+
+
+	jQuery(document).ready(function () {
+		jQuery("#dnngo_megamenu728abb32ab").has("ul").find(".dir > a").attr("aria-haspopup", "true");
+	}); 
+
+</script>
+                </div>
+              </div>
+            </nav>
+            <div class="menuRightBox">
+              <div class="nav_ico"> <span class="fa fa-user  " id="user-icon"></span> <span class="fa fa-search   "  id="search-icon"></span>
+                <div class="searchBox  "  id="search">
+                  
+                
+                <div align="center" id="cse-search-form" class="gcse-searchbox-only" data-resultsUrl="/Results" data-enableAutoComplete="true">
+    <div class="gsc-search-box gsc-search-box-tools" accept-charset="utf-8">
+        <table cellspacing="0" cellpadding="0" class="gsc-search-box">
+        <tbody>
+            <tr>
+            <td class="gsc-input">
+                <div class="gsc-input-box" id="gsc-iw-id1">
+                <table cellspacing="0" cellpadding="0" id="gs_id50" class="gstl_50 gsc-input" style="width: 100%; padding: 0px;">
+                    <tbody>
+                    <tr>
+                        <td id="gs_tti50" class="gsib_a">
+                        <input autocomplete="off" type="text" size="10" class="gsc-input" name="search" title="search" id="gsc-i-id1" placeholder="Search" style="width: 100%; padding: 0px; border: none; margin: 0px; height: auto; background: url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) left center no-repeat rgb(255, 255, 255); text-indent: 48px; outline: none;" dir="ltr" spellcheck="false"></td>
+                        <td class="gsib_b"><div class="gsst_b" id="gs_st50" dir="ltr">
+                            <a class="gsst_a" href="javascript:void(0)" style="display: none;" title="Clear search box" role="button">
+                            <span class="gscb_a" id="gs_cb50" aria-hidden="true">�</span>
+                            </a>
+                            </div>
+                        </td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
+                </td>
+            <td class="gsc-search-button">
+                <button class="gsc-search-button gsc-search-button-v2">
+                <svg width="13" height="13" viewBox="0 0 13 13">
+                    <title>search</title>
+                    <path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"></path>
+                    </svg>
+                </button>
+                </td>
+            <td class="gsc-clear-button">
+                <div class="gsc-clear-button" title="clear results">&nbsp;</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+</div>
+                </div>
+                <div class="Loginandlanguage" id="Loginandlanguage">
+                  <div class="languageBox  ">
+                    <div class="language-object" >
+
+
+</div>
+                  </div>
+                  <div class="Login   ">
+                    
+<div id="dnn_dnnUser_registerGroup" class="registerGroup">
+    <ul class="buttonGroup">
+        
+        
+    	<li class="userDisplayName"><a href="/MyAccount.aspx" ID="notificationLink" >My Account</a>&nbsp;<span class="sep">|</span></li>
+        <li class="userDisplayName"><a id="dnn_dnnUser_enhancedRegisterLink" title="Register" rel="nofollow" href="https://www.l3harrisgeospatial.com/Company/Create-Account?returnurl=https%3a%2f%2fwww.l3harrisgeospatial.com%2fLearn%2fBlogs%2fBlog-Details">Register</a></li>
+                                               
+    </ul>
+</div>
+                    <span class="sep">|</span>
+                    
+<div id="dnn_dnnLogin_loginGroup" class="loginGroup">
+    <a id="dnn_dnnLogin_enhancedLoginLink" title="Login" class="LoginLink" rel="nofollow" onclick="this.disabled=true;" href="https://www.l3harrisgeospatial.com/Account-Login?returnurl=%2fLearn%2fBlogs%2fBlog-Details%2fArtMID%2f10198%2fArticleID%2f15691%2fThe-Many-Band-Combinations-of-Landsat-8">Login</a>
+</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+        <!-- header end -->
+        <!-- mobile header -->
+        
+<div class="visible-xs visible-sm mobile_header">
+  <div class="mobile_nav">
+    <div class="shade"></div>
+    <div class="dnn_layout">
+      <div class="head_mid clearfix">
+        <div class="mobile_navbox">
+        
+          <div class="mobile_dnn_logo  ">
+                          <div class="Logobox  ">
+                <a id="dnn_dnnLOGOphone_hypLogo" title="L3Harris Geospatial" href="https://www.l3harrisgeospatial.com/"><img id="dnn_dnnLOGOphone_imgLogo" src="/Portals/0/L3Harris.png?ver=-njqzb3ltfCSqr3zO9LiYg%3d%3d" alt="L3Harris Geospatial" style="border-width:0px;" /></a>
+              </div>
+                      </div>
+          <div class="mobile_left_icon"><span class="fa fa-search  " id="ico_search"></span> </div>
+          <div class="mobile_right_icon">
+            
+<a href="#gomenu50020a9b8f" class="mobilemenu_close">X</a>
+<div id="gomenu50020a9b8f" class="mobile_menu ">
+    <ul  class="menu_list"><li class="dir   first-item Item-1 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions"   title="Geospatial Industry Solutions | Geospatial Services | L3Harris Geospatial"  ><span>Industry Solutions</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Academic"   title="Academic ENVI and IDL Software | Geospatial Software for Students & Teachers"  ><span>Academic</span></a></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Defense-Intelligence"   title="Defense Geospatial Intelligence | Defense Intelligence Geospatial Software"  ><span>Defense & Intelligence</span></a></li><li class="   SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Fed-Civil"   title="Geospatial Solutions for Federal Civil Services | Fed/Civil Geospatial Software"  ><span>Fed/Civil</span></a></li><li class="   SunItem-4 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Utilities"   title="Utility Management Solutions | Geospatial Asset Management"  ><span>Utilities</span></a></li><li class="   SunItem-5 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Solutions-Delivery"   title="Solutions Delivery - Geospatial Project Management | L3Harris Geospatial"  ><span>Solutions Delivery</span></a></li><li class="   SunItem-6 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Transportation"   title="Transportation Technology | Geospatial Software for Transportation Management"  ><span>Transportation</span></a></li><li class="   last-item SunItem-7 "><a href="https://www.l3harrisgeospatial.com/Industry-Solutions/Precision-Agriculture"   title="Precision Agriculture Technology - Crop Management Software"  ><span>Precision Agriculture</span></a></li></ul></li><li class="dir   Item-2 "><a href="https://www.l3harrisgeospatial.com/Software-Technology"   title="Geospatial Software & Technology | L3Harris Geospatial"  ><span>Software & Technology</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/Amplify"   title="Amplify"  ><span>Amplify</span></a></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/Enterprise-Solutions"   title="Enterprise Solutions | Advanced Geospatial Solutions | L3Harris Geospatial"  ><span>Enterprise Solutions</span></a></li><li class="   SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/ENVI"   title="ENVI - The Leading Geospatial Image Analysis Software"  ><span>ENVI</span></a></li><li class="   SunItem-4 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/ENVI-Deep-Learning"   title="ENVI Deep Learning - Automate Analytics With Deep Learning"  ><span>ENVI Deep Learning</span></a></li><li class="   SunItem-5 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/ENVI-SARscape"   title="ENVI SARscape - SAR Data Processing Software"  ><span>ENVI SARscape</span></a></li><li class="   SunItem-6 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/Helios"   title="Helios - Hyperlocal Weather Technology - Road Weather Conditions"  ><span>Helios</span></a></li><li class="   SunItem-7 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/IDL"   title="IDL Software - Interactive Data Visualization Solution"  ><span>IDL</span></a></li><li class="   last-item SunItem-8 "><a href="https://www.l3harrisgeospatial.com/Software-Technology/Jagwire"   title="Jagwire - Geospatial Data Management Software | L3Harris Geospatial"  ><span>Jagwire</span></a></li></ul></li><li class="dir   Item-3 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery"   title="Geospatial Data | Commercial Satellite Imagery Services | L3Harris Geospatial"  ><span>Data & Imagery</span></a><ul><li class="dir   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery"   title="Satellite Imagery Providers - Commercial Satellite Imagery "  ><span>Satellite Imagery</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/High-Resolution"   title="High Resolution Satellite Imagery | High-Res Imagery | L3Harris Geospatial"  ><span>High Resolution</span></a></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/Satellite-Subscription-Services"   title="Satellite Subscription Services "  ><span>Satellite Subscription Services</span></a></li><li class="   SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/Medium-Resolution"   title="Medium Resolution Satellite Imagery | Medium-Res Imagery | L3Harris Geospatial"  ><span>Medium Resolution</span></a></li><li class="   last-item SunItem-4 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Satellite-Imagery/Low-Resolution"   title="Low Resolution Satellite Imagery | Low-Res Imagery | L3Harris Geospatial"  ><span>Low Resolution</span></a></li></ul></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Elevation-Data"   title="Elevation Data & Digital Elevation Models | Terrain Data | L3Harris Geospatial"  ><span>Elevation Data</span></a></li><li class="   SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Aerial-Imagery"   title="Aerial Imagery & High Resolution Aerial Maps | Hexagon Imagery Program"  ><span>Aerial Imagery</span></a></li><li class="dir   last-item SunItem-4 "><a href="javascript:;"   title="Services"  ><span>Services</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Services/Aerial-Survey-Mapping-Services"   title="Aerial & Topographic Mapping Services | L3Harris Geospatial"  ><span>Aerial Survey Mapping Services</span></a></li><li class="   last-item SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Data-Imagery/Services/Satellite-Imagery-Services"   title="Satellite Imagery Services | Satellite Mapping Services | L3Harris Geospatial"  ><span>Satellite Imagery Services</span></a></li></ul></li></ul></li><li class="dir  current  Item-4 "><a href="https://www.l3harrisgeospatial.com/Learn"   title="Geospatial Information | L3Harris Geospatial"  ><span>Learn</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Learn/Case-Studies"   title="Case Studies - Geospatial Information | L3Harris Geospatial"  ><span>Case Studies</span></a></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Learn/Videos"   title="Videos - Geospatial Information | L3Harris Geospatial"  ><span>Videos</span></a></li><li class="  subcurrent  SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Learn/Blogs"   title="Blogs - Geospatial Information | L3Harris Geospatial"  ><span>Blogs</span></a></li><li class="   SunItem-4 "><a href="https://www.l3harrisgeospatial.com/Learn/Brochures"   title="Brochures - Geospatial Information | L3Harris Geospatial"  ><span>Brochures</span></a></li><li class="   SunItem-5 "><a href="https://www.l3harrisgeospatial.com/Learn/Training"   title="Training - Geospatial Information | L3Harris Geospatial"  ><span>Training</span></a></li><li class="   last-item SunItem-6 "><a href="https://www.l3harrisgeospatial.com/Learn/Whitepapers"   title="Whitepapers - Geospatial Information | L3Harris Geospatial"  ><span>Whitepapers</span></a></li></ul></li><li class="dir   Item-5 "><a href="https://www.l3harrisgeospatial.com/Support"   title="Support - ENVI & IDL | L3Harris Geospatial"  ><span>Support</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Support/Forums"   title="Help Forums - ENVI & IDL | L3Harris Geospatial"  ><span>Forums</span></a></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/My-Account/Extensions"   title="Extensions"  ><span>Extensions</span></a></li><li class="dir   SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Support/Self-Help-Tools"   title="Self Help Tools - ENVI & IDL| L3Harris Geospatial"  ><span>Self Help Tools</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/docs/home.html"   title=" Documentation Center  - Support | Harris Geospatial"  ><span>Documentation Center</span></a></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Support/Self-Help-Tools/Help-Articles"   title="Help Articles - ENVI & IDL | L3Harris Geospatial"  ><span>Help Articles</span></a></li><li class="   last-item SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Support/Self-Help-Tools/Tutorials"   title="Tutorials - ENVI | L3Harris Geospatial"  ><span>Tutorials</span></a></li></ul></li><li class="   SunItem-4 "><a href="https://www.l3harrisgeospatial.com/Support/Maintenance"   title="Product Updates"  ><span>Product Updates</span></a></li><li class="   last-item SunItem-5 "><a href="https://www.l3harrisgeospatial.com/Support/Technical-Support"   title="Technical Support - ENVI & IDL | L3Harris Geospatial"  ><span>Technical Support</span></a></li></ul></li><li class="dir   last-item Item-6 "><a href="https://www.l3harrisgeospatial.com/Company"   title="Company | L3Harris Geospatial"  ><span>Company</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Company/About-L3Harris-Geospatial"   title="About Us | L3Harris Geospatial"  ><span>About L3Harris Geospatial</span></a></li><li class="   SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Company/Core-Technology"   title="Core Technologies | L3Harris Geospatial"  ><span>Core Technology</span></a></li><li class="   SunItem-3 "><a href="https://www.l3harrisgeospatial.com/Company/Careers"   title="Careers | L3Harris Geospatial"  ><span>Careers</span></a></li><li class="   SunItem-4 "><a href="https://www.l3harrisgeospatial.com/Company/Partners"   title="Partnerships | L3Harris Geospatial"  ><span>Partners</span></a></li><li class="   SunItem-5 "><a href="https://www.l3harrisgeospatial.com/Company/News"   title="News & Press Room | L3Harris Geospatial"  ><span>News</span></a></li><li class="dir   SunItem-6 "><a href="javascript:;"   title="Geospatial Events | Harris Geospatial"  ><span>Events</span></a><ul><li class="   first-item SunItem-1 "><a href="https://www.l3harrisgeospatial.com/Company/Events/Tradeshows"   title="Events - Tradeshows | L3Harris Geospatial"  ><span>Tradeshows</span></a></li><li class="   last-item SunItem-2 "><a href="https://www.l3harrisgeospatial.com/Company/Events/Webinar"   title="Events - Webinars | L3Harris Geospatial"  ><span>Webinar</span></a></li></ul></li><li class="   last-item SunItem-7 "><a href="https://www.l3harrisgeospatial.com/Company/Contact-Us"   title="Contact Us | L3Harris Geospatial"  ><span>Contact Us</span></a></li></ul></li></ul>
+</div>
+ 
+ <script type="text/javascript">
+     jQuery(document).ready(function ($) {
+
+
+		 $('#gomenu50020a9b8f').find(".dir.mm-selected").removeClass("mm-selected").parent().parent().addClass("mm-selected")
+		 
+         $('#gomenu50020a9b8f').mobile_menu({
+             slidingSubmenus: true,
+             counters: true,
+             navbartitle: "Menu",
+             headerbox: ".menu_header",
+             footerbox: ".menu_footer"			 
+         });
+		 
+		  $('#gomenu50020a9b8f').find("a[href='javascript:;']").on("click",function (e) {
+			  e.preventDefault();
+			  $(this).siblings(".mm-next").click();
+		  })
+     });
+</script>
+
+
+           
+           </div>
+           
+          <div class="searchBox  "  id="mobile_search">
+            <span id="dnn_dnnSEARCH3_ClassicSearch">
+    
+    
+    <span class="searchInputContainer" data-moreresults="See More Results" data-noresult="No Results Found">
+        <input name="dnn$dnnSEARCH3$txtSearch" type="text" maxlength="255" size="20" id="dnn_dnnSEARCH3_txtSearch" class="NormalTextBox" aria-label="Search" autocomplete="off" placeholder="Search..." />
+        <a class="dnnSearchBoxClearText" title="Clear search text"></a>
+    </span>
+    <a id="dnn_dnnSEARCH3_cmdSearch" class="search" href="javascript:__doPostBack(&#39;dnn$dnnSEARCH3$cmdSearch&#39;,&#39;&#39;)"> </a>
+</span>
+
+
+<script type="text/javascript">
+    $(function() {
+        if (typeof dnn != "undefined" && typeof dnn.searchSkinObject != "undefined") {
+            var searchSkinObject = new dnn.searchSkinObject({
+                delayTriggerAutoSearch : 400,
+                minCharRequiredTriggerAutoSearch : 2,
+                searchType: 'S',
+                enableWildSearch: true,
+                cultureCode: 'en-US',
+                portalId: -1
+                }
+            );
+            searchSkinObject.init();
+            
+            
+            // attach classic search
+            var siteBtn = $('#dnn_dnnSEARCH3_SiteRadioButton');
+            var webBtn = $('#dnn_dnnSEARCH3_WebRadioButton');
+            var clickHandler = function() {
+                if (siteBtn.is(':checked')) searchSkinObject.settings.searchType = 'S';
+                else searchSkinObject.settings.searchType = 'W';
+            };
+            siteBtn.on('change', clickHandler);
+            webBtn.on('change', clickHandler);
+            
+            
+        }
+    });
+</script>
+
+ 
+          </div>
+          <div class="Loginandlanguage menu_footer" id="mobile_user"> <span class=" ">
+            <div class="language-object" >
+
+
+</div>
+            </span> <span class=" ">
+            
+<div id="dnn_dnnUser2_registerGroup" class="registerGroup">
+    <ul class="buttonGroup">
+        
+        
+    	<li class="userDisplayName"><a href="/MyAccount.aspx" ID="notificationLink" >My Account</a>&nbsp;<span class="sep">|</span></li>
+        <li class="userDisplayName"><a id="dnn_dnnUser2_enhancedRegisterLink" title="Register" rel="nofollow" href="https://www.l3harrisgeospatial.com/Company/Create-Account?returnurl=https%3a%2f%2fwww.l3harrisgeospatial.com%2fLearn%2fBlogs%2fBlog-Details">Register</a></li>
+                                               
+    </ul>
+</div>
+            <span class="sep">|</span>
+            
+<div id="dnn_dnnLogin2_loginGroup" class="loginGroup">
+    <a id="dnn_dnnLogin2_enhancedLoginLink" title="Login" class="LoginLink" rel="nofollow" onclick="this.disabled=true;" href="https://www.l3harrisgeospatial.com/Account-Login?returnurl=%2fLearn%2fBlogs%2fBlog-Details%2fArtMID%2f10198%2fArticleID%2f15691%2fThe-Many-Band-Combinations-of-Landsat-8">Login</a>
+</div>
+            </span> </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="HeaderBottom menu_header clearfix">
+          <div class="HeaderPane_mobile menu_header  "></div>
+          <div class="HeaderPaneB_mobile  "></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- mobile end -->
+      <!-- breadcrumb header -->
+      <div class="Breadcrumb_bg ">
+    <div class="dnn_layout clearfix"> 
+        <div class="breadcrumbBox  ">
+          <div class="breadcrumbborder  clearfix">
+           <h3><a href="/Home.aspx"><i class="fa fa-home" style="font-size: 1.3em;"></i></a><span class="fa fa-angle-right"></span></h3>
+            <div class="breadcrumbtoken">
+              <span id="dnn_dnnBREADCRUMB_lblBreadCrumb" itemprop="breadcrumb" itemscope="" itemtype="https://schema.org/breadcrumb"><span itemscope itemtype="http://schema.org/BreadcrumbList"><span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://www.l3harrisgeospatial.com/Learn" class="breadcrumb" itemprop="item"><span itemprop="name">Learn</span></a><meta itemprop="position" content="1" /></span> <span class='fa fa-angle-right'></span> <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://www.l3harrisgeospatial.com/Learn/Blogs" class="breadcrumb" itemprop="item"><span itemprop="name">Blogs</span></a><meta itemprop="position" content="2" /></span> <span class='fa fa-angle-right'></span> <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://www.l3harrisgeospatial.com/Learn/Blogs/Blog-Details" class="breadcrumb" itemprop="item"><span itemprop="name">Blog-Details</span></a><meta itemprop="position" content="3" /></span></span></span>
+            </div>
+                            <div class="inside04-social02"> 
+	<a class="twitter" href="https://twitter.com/geobyharris" target="_blank"><span class="fa fa-twitter"></span></a>
+	<a class="facebook" href="http://www.facebook.com/harrisgeospatialsolutions" target="_blank"><span class="fa fa-facebook" target="_blank"></span></a>
+	<a class="youTube" href="https://www.youtube.com/user/ExelisVIS" target="_blank"><span class="fa fa-youtube" target="_blank"></span></a>
+	<a class="linkedIn" href="https://www.linkedin.com/company/harrisgeospatialsolutions" target="_blank"><span class="fa fa-linkedin-square" target="_blank"></span></a>
+	<a class="instagram" href="https://www.instagram.com/harrisgeospatials/" target="_blank"><span class="fa fa-instagram" target="_blank"></span></a>
+</div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+      <!-- breadcrumb end -->
+    </div>
+        <section id="dnn_content">
+          <!-- content pane -->
+      <div id="dnn_TopOutPane" class="TopOutPane DNNEmptyPane"></div>
+<div id="dnn_Full_Screen_PaneA" class="Full_Screen_PaneA DNNEmptyPane"></div>
+<div class="dnn_layout clearfix">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="dnn_TopPane" class="TopPane"><div class="DnnModule DnnModule-EasyDNNnews DnnModule-10198"><a name="10198"></a>
+<div class="White">
+     <div id="dnn_ctr10198_ContentPane" class="contentpane"><!-- Start_Module_10198 --><div id="dnn_ctr10198_ModuleContent">
+	
+
+<script type="text/javascript">
+	/*<![CDATA[*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	eds3_5_jq(function ($) {
+		if (typeof edn_fluidvids != 'undefined')
+			edn_fluidvids.init({
+				selector: ['.edn_fluidVideo iframe'],
+				players: ['www.youtube.com', 'player.vimeo.com']
+			});
+		
+		
+		
+
+	});
+	/*]]>*/
+</script>
+
+
+
+<div class="eds_news_module_10198 news eds_subCollection_news eds_news_Galore eds_template_Details_Article_Default eds_templateGroup_detailsArticleDefault eds_styleSwitchCriteria_module-10198">
+	
+
+	
+
+	
+
+	
+
+	<div id="dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_pnlViewArticle">
+		
+		
+		
+		
+		
+	<article class="edNews_article edNews_articleDetails">
+		
+		
+		<div class="edNews_articleContent">
+			<div class="edNews_metaDetails">
+				<i class="fa fa-eye"></i>
+				<span>76838</span>
+				 Rate this article: <div class="article_rating"><span class="current_rating" > 4.2</span><div class="EDN_article_rateit M10198 rateit " data-rateit-step="1" data-rateit-min="0" data-rateit-max="5" data-rateit-resetable="false" ></div></div>
+			</div>
+			<!--<div class="edNews_categories"><a href="https://www.l3harrisgeospatial.com/Learn/Blogs/Blog-Details/PID/10198/CategoryID/75?CategoryName=ENVI-Blog-|-Imagery-Speaks" class="ENVI_Blog_Imagery_Speaks EDNcategorycolor-default">ENVI Blog | Imagery Speaks</a></div>--><div><br /></div>
+			<h1 class="edNews_articleTitle">The Many Band Combinations of Landsat 8</h1>
+			
+			
+
+		
+		
+		
+			<div class="edNews_clearFix"></div>
+			<div class="edNews_authorAndDate">
+				
+				<a href="https://www.l3harrisgeospatial.com/Learn/Blogs/PID/100/authorid/25/AuthorName/Joe-Peters">Joe Peters</a>
+				<time>Thursday, January 29, 2015</time>
+			</div>
+
+		
+			<p>Landsat 8 is the most recent satellite in the Landsat program. The data quality (signal-to-noise ratio) and radiometric quantization (12-bits) of the Landsat 8 Operational Land Imager (OLI) and Thermal Infrared Sensor (TIRS) are higher than previous Landsat instruments (8-bit for TM and ETM+). Since it's launch on February 11, 2013, Landsat 8 has been providing some truly stunning images of the earth's surface. Beyond their beauty, these images are packed with information which can be manipulated to extract features and discern changes to the earth's surface over time.</p>
+<p>When working with Landsat imagery, a logical first step is to load an image into an image analysis program and begin to visualize what is in the scene. The OLI sensor aboard Landsat 8 has nine bands for capturing the spectral response of the earth's surface at discrete wavelengths along the electromagnetic spectrum. Additionally, the TIRS sensor aboard Landsat 8 collects information at two discrete wavelengths within the thermal infrared portion of the electromagnetic spectrum.&nbsp;These wavelengths have been chosen carefully based on years of scientific research.</p>
+<p style="text-align: center;"><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_1_Wavelengths.jpg" style="width: 500px; height: 266px; border: 1px solid #000000;" /></p>
+<p>Standard digital cameras are designed to replicate what we see with the human eye, so they capture light only in the red, green and blue wavelengths and then apply red, green and blue filters (also known as channels) to these wavelengths, respectively, that when combined generate a natural looking RGB image. With a multispectral image from a sensor system such as Landsat 8, we have a lot more information to work with. Different wavelengths can often help us discern some features better than others or even help us "see through" features such as clouds or smoke. For example, the Near Infrared (NIR) wavelength is one of the most commonly used wavelengths on multispectral sensors because vegetation reflects so strongly in this portion of the electromagnetic spectrum that this information proves very useful when performing vegetation analyses. The Shortwave Infrared (SWIR) bands aboard Landsat 8 are very useful for discerning differences in bare earth and for telling what is wet and what is dry in a scene. There are many other examples of the advantages of the available bands in Landsat images, but what I would like to do here is simply show how loading different combinations of these bands into the red, green and blue channels makes different features stand out. I am not the first to do this, but I just thought I would add an additional resource to the world wide web for showing how these band combinations can be used to visualize Landsat 8 images.</p>
+<p><strong>4 , 3 , 2 - Natural Color Image, Fresno, California</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p>This band combination is as close to "true color" as you can get with a Landsat OLI image. One unfortunate drawback with this band combination is that these bands tend to be susceptible to atmospheric interference, so they sometimes appear hazy.</p>
+</blockquote>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p style="text-align: left;"><strong><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_2_NaturalColor.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /></strong></p>
+</blockquote>
+<p style="text-align: left;"><strong>5, 4, 3 - Traditional Color Infrared (CIR) Image, Colorado/Utah</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p style="text-align: left;">Note how vegetation really pops in red, with healthier vegetation being more vibrant. It's also easier to tell different types of vegetation apart than it is with a natural color image. This is a very commonly used band combination in remote sensing when looking at vegetation, crops and wetlands.</p>
+</blockquote>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p style="text-align: left;"><strong><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_3_CIR.jpg" style="width: 500px; height: 384px; border: 1px solid #000000;" /></strong></p>
+</blockquote>
+<p style="text-align: left;"><strong>7, 6, 4 - False Color useful for visualizing urban environments, Los Angeles, California</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p style="text-align: left;">Because this band combination makes use of both of the SWIR bands aboard Landsat 8, the image is much more crisp than band combinations that make use of bands in shorter wavelengths, which are more susceptible to haze.</p>
+</blockquote>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p style="text-align: left;"><strong><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_4_FalseColor_Urban_764.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /></strong></p>
+</blockquote>
+<p style="text-align: left;"><strong>5, 6, 4 - False Color good for picking out land from water, Hudson Bay, Canada
+</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p style="text-align: left;">In this false color image, land appears in shades of orange and green, ice stands out as a vibrant magenta color, and water appears in shades of blue.</p>
+</blockquote><blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+</blockquote>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p style="text-align: left;"><strong><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_5_564_Land_Water2.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /><br />
+</strong></p>
+</blockquote>
+<p><strong>7, 5, 3 - False color image with good atmospheric penetration, Washington/Oregon</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p>This band combination is similar to the 5, 6, 4 band combination shown above, but vegetation shows up in more vibrant shades of green. This band combination was used for the global Landsat mosaic created by NASA.</p>
+</blockquote><blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p><strong><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_6_753_AtmosphericPenetration.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /><br />
+</strong></p>
+</blockquote>
+<p><strong>6, 5, 2 - False color for agriculture, Fruita, Colorado</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p>This band combination is useful for the monitoring of agricultural crops, which appear as a vibrant green. Bare earth appears as a magenta color and non-crop vegetation appears as more subdued shades of green.</p>
+</blockquote>
+<div>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<div><strong>
+<p><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_7_652_Agriculture.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /></p>
+</strong></div>
+</blockquote>
+<p><strong>7, 5, 2 - False color often used for visualizing forest fire burn scars, Rim Fire, California</strong></p>
+</div>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p>This band combination is similar to the 6, 5, 2 band combination shown above, but by pushing further into the SWIR range of the electromagnetic spectrum, there is less susceptibility to smoke and haze generated by a burning fire.</p>
+<p><img alt="" src="/Portals/0/blogs/imageryspeaks/_8_752_RimFire.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /></p>
+</blockquote>
+<p><strong>6, 3, 2 - False color for distinguishing differences in bare earth, Canyonlands NP, Utah</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p>This band combination is good for discerning variations in a landscape that does not contain an abundance of vegetation. It is good for geologic applications.</p>
+</blockquote><blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p><strong><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/9_632_BareEarth.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /><br />
+</strong></p>
+</blockquote>
+<p><strong>5, 7, 1 - False color for vegetation and water, Lake Victoria, Tanzania</strong></p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p>This band combination makes use of the NIR, SWIR2, and Coastal Aerosol bands, respectively. The Coastal Aerosol band is unique to Landsat 8 and is used primarily to track fine particles like dust and smoke, and also to peer into shallow water. With this color combination, vegetation appears orange.</p>
+<p><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_10_571_Water.jpg" style="width: 500px; height: 385px; border: 1px solid #000000;" /></p>
+</blockquote>
+<p>There are certainly several additional band combinations that would be useful for visualizing Landsat 8 scenes. In some situations, loading a grayscale image of a single band might also help to visualize specific features or phenomena. For example, in the grayscale image below, we are viewing the Thermal Infrared 1 band from the Landsat 8 TIRS sensor. This image, captured over Iceland, shows the Bardarbunga volcano in bright white in the top center of the image. Since we are using a thermal infrared band, this feature sticks out significantly from the ice sheet located just to the south of the lava flow.</p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<p><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_11_Bardarbunga.jpg" style="width: 500px; height: 387px; border: 1px solid #000000;" /></p>
+</blockquote>
+<p>With grayscale images, we also have the option of applying a color table to highlight features a little more clearly. In the image below we are viewing the same grayscale image of the Bardarbunga volcano, but now we have applied a color table that shows very cold extremes of the glacier in shades of deeper blue and very warm extremes of the lava flow in shades of deeper red.</p>
+<blockquote style="margin: 0px 0px 0px 40px; border: none; padding: 0px;">
+<div>
+<p><img alt="" src="/Portals/0/blogs/imageryspeaks/JoePeters/_12_Bardarbunga_Color.jpg" style="width: 500px; height: 387px; border: 1px solid #000000;" /></p>
+</div>
+</blockquote>
+<div>
+<div>
+<div>
+<div>
+<p>There are many analysis techniques that can be applied to multispectral imagery to extract specific features of interest. These algorithms rely on the same principles of reflectivity and absorption at various wavelengths that allow us to see certain features when visualizing them with different band combinations.&nbsp;An important point to note is that if a particular band, or combination of bands, does a good job of helping you visualize a feature that is of interest to you, then it is highly likely that this band, or combination of bands, can be used to help you isolate that feature from your image. For more on this topic, please check out the section of our <a href="http://www.exelisvis.com/docs/home.html" target="_blank">Documentation Center</a> devoted to <a href="http://www.exelisvis.com/docs/spectralindices.html" target="_blank">Spectral Indices</a>.</p>
+<p>&nbsp;</p>
+</div>
+</div>
+</div>
+</div>
+
+		
+		
+			
+			
+			
+			
+			
+			
+
+		
+		
+		
+		</div>
+
+		
+		
+		<input type="hidden" name="dnn$ctr10198$ViewEasyDNNNewsMain$ctl00$hfRate" id="dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_hfRate" value=" 4.246" />
+		<script type="text/javascript">
+			// <![CDATA[
+			eds3_5_jq(function ($) {
+				var isArticleRated = false;
+				if (!false)
+					isArticleRated = $.cookie("EDNA-115691");
+				var $rate_it = $(".EDN_article_rateit.M10198");
+
+				$rate_it.bind('rated reset', function (e) {
+					var ri = $(this),
+						value = ri.rateit('value'),
+						articleid = 15691,
+						portalId = 0,
+						moduleId = 10198,
+						tabId = 2716;
+
+					$rate_it.rateit('readonly', true);
+					ri.rateit('readonly', true);
+
+					if (!false)
+						$.cookie("EDNA-115691", "true");
+
+					document.getElementById("dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_hfRate").value = value;
+
+					$.ajax({
+						url: "/DesktopModules/EasyDNNNews/ashx/RateArticle.ashx",
+						type: "POST",
+						cache: false,
+						dataType: 'json',
+						timeout: 15000,
+						data: {
+							portalId: portalId,
+							moduleId: moduleId,
+							tabId: tabId,
+							articleid: articleid,
+							ratingValue: value
+						}
+					})
+						.done(function (response, status) {
+							ri.siblings('.current_rating').text(response);
+						})
+						.fail(function () {
+						})
+						.always(function () {
+						});
+				})
+					.rateit('value', document.getElementById("dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_hfRate").value)
+					.rateit('readonly', isArticleRated)
+					.rateit('step', 1);
+
+				$('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_upPanelComments').on('click', '#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lbAddComment', function () {
+					var $lbAddComment = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lbAddComment'),
+						noErrors = true,
+
+						$authorNameInput = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_tbAddCommentName'),
+						$authorEmailInput = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_tbAddCommentEmail'),
+						$authorGDPRAgreement = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_cbShowCommentsGDPRComplianceAgreementRules'),
+						authorName,
+						authorEmail,
+						comment = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_tbAddComment').val(),
+
+						$noAuthorName = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lblAddCommentNameError'),
+						$noAuthorEmail = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lblAddCommentEmailError'),
+						$authorEmailNotValid = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lblAddCommentEmailValid'),
+						$noComment = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lblAddCommentError'),
+						$notValidCaptcha = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lblCaptchaError'),
+						$noauthorGDPRAgreement = $('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_lblShowCommentsGDPRComplianceAgreementError'),
+
+						emailRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+					if ($lbAddComment.data('disable'))
+						return false;
+
+					if ($authorNameInput.length > 0) {
+						authorName = $authorNameInput.val();
+
+						$noAuthorName.css('display', 'none');
+
+						if (authorName == '') {
+							$noAuthorName.css('display', 'block');
+							noErrors = false;
+						}
+					}
+
+					if ($authorEmailInput.length > 0) {
+						authorEmail = $authorEmailInput.val();
+
+						$noAuthorEmail.css('display', 'none');
+						$authorEmailNotValid.css('display', 'none');
+
+						if (authorEmail == '') {
+							$noAuthorEmail.css('display', 'block');
+							noErrors = false;
+						} else if (!emailRegex.test(authorEmail)) {
+							$authorEmailNotValid.css('display', 'block');
+							noErrors = false;
+						}
+					}
+
+					if ($authorGDPRAgreement.length > 0) {
+						$noauthorGDPRAgreement.css('display', 'none');
+						if (!$authorGDPRAgreement[0].checked) {
+							$noauthorGDPRAgreement.css('display', 'block');
+							noErrors = false;
+						}
+					}
+
+					if ($('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_pnlCommentsCaptcha').length > 0) {
+						var commentsCaptchaResponse = grecaptcha.getResponse(window.eds_commentsform_captchaId);
+						if (commentsCaptchaResponse.length == 0) {
+							$('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_hfCommentsFormCaptchaResponse').val('');
+							$notValidCaptcha.css('display', 'block');
+							noErrors = false;
+						}
+						else {
+							$('#dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_hfCommentsFormCaptchaResponse').val(commentsCaptchaResponse);
+							$notValidCaptcha.css('display', 'none');
+						}
+					}
+
+					if (comment == '') {
+						$noComment.css('display', 'block');
+						noErrors = false;
+					} else
+						$noComment.css('display', 'none');
+
+					if (noErrors)
+						$lbAddComment.data('disable', true);
+					else
+						return false;
+				});
+			});
+			//*/ ]]>
+		</script>
+		<div id="dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_upPanelComments">
+			
+				
+				
+				<input type="hidden" name="dnn$ctr10198$ViewEasyDNNNewsMain$ctl00$hfReplayToComment" id="dnn_ctr10198_ViewEasyDNNNewsMain_ctl00_hfReplayToComment" />
+			
+		</div>
+		
+		
+		
+		
+		<div class="edNews_fixedPrevNextArticleNavigation">
+			
+			<a class="edNews_previusArticle" href="https://www.l3harrisgeospatial.com/Learn/Blogs/Blog-Details/ArtMID/10198/ArticleID/15715/Problems-Assigning-LIST-HASH-etc-to-Class-or-Structure-Tags">
+				
+				
+				<span class="edNews_fixedNavImage" style="height:140px;">
+					<span class="edNews_fixedNavTitle" style="width:140px;">Problems Assigning LIST, HASH, etc. to Class or Structure Tags</span>
+				</span>
+				
+			</a>
+			
+			
+			<a class="edNews_nextArticle" href="https://www.l3harrisgeospatial.com/Learn/Blogs/Blog-Details/ArtMID/10198/ArticleID/15686/Queuing-ESE-Tasks-in-a-Loop">
+				
+				
+				<span class="edNews_fixedNavImage" style="height:140px;">
+					<span class="edNews_fixedNavTitle" style="width:140px;">Queuing ESE Tasks in a Loop</span>
+				</span>
+				
+			</a>
+			
+		</div>
+		
+	</article>
+
+	
+	</div>
+	
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+</div><!-- End_Module_10198 --></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+    </div>
+  </div>
+</div>
+<div id="dnn_Full_Screen_PaneB" class="Full_Screen_PaneB DNNEmptyPane"></div>
+<div class="dnn_layout clearfix">
+  <div class="row">
+    <div class="col-sm-3">
+      <div id="dnn_RowOne_Grid3_Pane" class="RowOne_Grid3_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-9">
+      <div id="dnn_RowOne_Grid9_Pane" class="RowOne_Grid9_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div id="dnn_RowTwo_Grid4_Pane" class="RowTwo_Grid4_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-8">
+      <div id="dnn_RowTwo_Grid8_Pane" class="RowTwo_Grid8_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">
+      <div id="dnn_RowThree_Grid5_Pane" class="RowThree_Grid5_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-7">
+      <div id="dnn_RowThree_Grid7_Pane" class="RowThree_Grid7_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div id="dnn_RowFour_Grid6_Pane1" class="RowFour_Grid6_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-6">
+      <div id="dnn_RowFour_Grid6_Pane2" class="RowFour_Grid6_Pane2 DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-7">
+      <div id="dnn_RowFive_Grid7_Pane" class="RowFive_Grid7_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-5">
+      <div id="dnn_RowFive_Grid5_Pane" class="RowFive_Grid5_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div id="dnn_RowSix_Grid8_Pane" class="RowSix_Grid8_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-4">
+      <div id="dnn_RowSix_Grid4_Pane" class="RowSix_Grid4_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-9">
+      <div id="dnn_RowSeven_Grid9_Pane" class="RowSeven_Grid9_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-3">
+      <div id="dnn_RowSeven_Grid3_Pane" class="RowSeven_Grid3_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+</div>
+<div id="dnn_Full_Screen_PaneC" class="Full_Screen_PaneC DNNEmptyPane"></div>
+<div class="dnn_layout clearfix">
+  <div class="row">
+    <div class="col-sm-4">
+      <div id="dnn_RowEight_Grid4_Pane1" class="RowEight_Grid4_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-4">
+      <div id="dnn_RowEight_Grid4_Pane2" class="RowEight_Grid4_Pane2 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-4">
+      <div id="dnn_RowEight_Grid4_Pane3" class="RowEight_Grid4_Pane3 DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div id="dnn_RowNine_Grid3_Pane1" class="RowNine_Grid3_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-6">
+      <div id="dnn_RowNine_Grid6_Pane" class="RowNine_Grid6_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-3">
+      <div id="dnn_RowNine_Grid3_Pane2" class="RowNine_Grid3_Pane2 DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RownTen_Grid3_Pane1" class="RownTen_Grid3_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RowTen_Grid3_Pane2" class="RowTen_Grid3_Pane2 DNNEmptyPane"></div>
+    </div>
+    <div class="clearfix visible-sm"></div>
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RowTen_Grid3_Pane3" class="RowTen_Grid3_Pane3 DNNEmptyPane"></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RowTen_Grid3_Pane4" class="RowTen_Grid3_Pane4 DNNEmptyPane"></div>
+    </div>
+  </div>
+</div>
+<div id="dnn_Full_Screen_PaneD" class="Full_Screen_PaneD DNNEmptyPane"></div>
+<div class="dnn_layout clearfix">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="dnn_ContentPane" class="ContentPane DNNEmptyPane"></div>
+    </div>
+  </div>
+</div>
+<div id="dnn_Full_Screen_PaneE" class="Full_Screen_PaneE DNNEmptyPane"></div>
+<div class="dnn_layout clearfix">
+  <div class="row">
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RownEleven_Grid3_Pane1" class="RownEleven_Grid3_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RowEleven_Grid3_Pane2" class="RowEleven_Grid3_Pane2 DNNEmptyPane"></div>
+    </div>
+    <div class="clearfix visible-sm"></div>
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RowEleven_Grid3_Pane3" class="RowEleven_Grid3_Pane3 DNNEmptyPane"></div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+      <div id="dnn_RowEleven_Grid3_Pane4" class="RowEleven_Grid3_Pane4 DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div id="dnn_RowTwelve_Grid3_Pane1" class="RowTwelve_Grid3_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-6">
+      <div id="dnn_RowTwelve_Grid6_Pane" class="RowTwelve_Grid6_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-3">
+      <div id="dnn_RowTwelve_Grid3_Pane2" class="RowTwelve_Grid3_Pane2 DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div id="dnn_RowThirteen_Grid4_Pane1" class="RowThirteen_Grid4_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-4">
+      <div id="dnn_RowThirteen_Grid4_Pane2" class="RowThirteen_Grid4_Pane2 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-4">
+      <div id="dnn_RowThirteen_Grid4_Pane3" class="RowThirteen_Grid4_Pane3 DNNEmptyPane"></div>
+    </div>
+  </div>
+</div>
+<div id="dnn_Full_Screen_PaneF" class="Full_Screen_PaneF DNNEmptyPane"></div>
+<div class="dnn_layout clearfix">
+  <div class="row">
+    <div class="col-sm-9">
+      <div id="dnn_RowFourteen_Grid9_Pane" class="RowFourteen_Grid9_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-3">
+      <div id="dnn_RowFourteen_Grid3_Pane" class="RowFourteen_Grid3_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <div id="dnn_RowFifteen_Grid8_Pane" class="RowFifteen_Grid8_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-4">
+      <div id="dnn_RowFifteen_Grid4_Pane" class="RowFifteen_Grid4_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-7">
+      <div id="dnn_RowSixteen_Grid7_Pane" class="RowSixteen_Grid7_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-5">
+      <div id="dnn_RowSixteen_Grid5_Pane" class="RowSixteen_Grid5_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <div id="dnn_RowSeventeen_Grid6_Pane1" class="RowSeventeen_Grid6_Pane1 DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-6">
+      <div id="dnn_RowSeventeen_Grid6_Pane2" class="RowSeventeen_Grid6_Pane2 DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-5">
+      <div id="dnn_RowEighteen_Grid5_Pane" class="RowEighteen_Grid5_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-7">
+      <div id="dnn_RowEighteen_Grid7_Pane" class="RowEighteen_Grid7_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div id="dnn_RowNineteen_Grid4_Pane" class="RowNineteen_Grid4_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-8">
+      <div id="dnn_RowNineteen_Grid8_Pane" class="RowNineteen_Grid8_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-3">
+      <div id="dnn_RowTwenty_Grid3_Pane" class="RowTwenty_Grid3_Pane DNNEmptyPane"></div>
+    </div>
+    <div class="col-sm-9">
+      <div id="dnn_RowTwenty_Grid9_Pane" class="RowTwenty_Grid9_Pane DNNEmptyPane"></div>
+    </div>
+  </div>
+</div>
+<div id="dnn_Full_Screen_PaneG" class="Full_Screen_PaneG DNNEmptyPane"></div>
+<div class="dnn_layout clearfix">
+  <div class="row">
+    <div class="col-sm-12">
+      <div id="dnn_BottomPane" class="BottomPane DNNEmptyPane"></div>
+    </div>
+  </div>
+</div>
+<div id="dnn_Full_Screen_PaneH" class="Full_Screen_PaneH DNNEmptyPane"></div>
+<div id="dnn_BottomOutPane" class="BottomOutPane DNNEmptyPane"></div>
+
+      <!-- content pane end -->
+        <div class="clearfix"></div>
+      <div class="team-Detail-bg">
+        <div class="dnn_layout">
+          <div class="content_mid clearfix">
+            <div class="row">
+              <div class="col-sm-12"> 
+			  
+			   <div id="dnn_TeamDetailPane" class="TeamDetailPane DNNEmptyPane"></div>
+			  
+			  </div>
+            </div>
+          </div>
+        </div>
+        <div class="dnn_layout">
+          <div class="content_mid clearfix">
+            <div class="row">
+              <div class="col-sm-6">
+                <div id="dnn_TeamDetailPaneL" class="TeamDetailPaneL DNNEmptyPane"></div>
+              </div>
+              <div class="col-sm-6">
+                <div id="dnn_TeamDetailPaneR" class="TeamDetailPaneR DNNEmptyPane"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="clearfix"></div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+
+<footer class="footer_box">
+  <div class="footer_bg"></div>
+  <div class="foot_bg  ">
+    <div class="foot_bgs"></div>
+    <div class="clearfix"></div>
+    <div id="dnn_Full_Screen_FootPaneA" class="Full_Screen_FootPaneA   DNNEmptyPane"></div>
+    <div class="dnn_layout clearfix">
+      <div class="row">
+        <div class="col-sm-4  ">
+          <div id="dnn_FootPaneA" class="FootPaneA  "><div class="DnnModule DnnModule-DNN_HTML DnnModule-10327 DnnVersionableControl"><a name="10327"></a>
+
+<div class="Home04-Container02"> 
+  <!--Container Title-->
+  <div class="dnntitle">
+      <span id="dnn_ctr10327_dnnTITLE6_titleLabel" class="Home04-heading02">QUICK LINKS</span>
+
+
+
+  </div>
+  <!--Container Title End--> 
+  <!--Container Content-->
+  <div class="contentmain1">
+    <div id="dnn_ctr10327_ContentPane" class="contentpane"><!-- Start_Module_10327 --><div id="dnn_ctr10327_ModuleContent">
+	<div id="dnn_ctr10327_HtmlModule_lblContent"><ul class="home04-list02 animation scaleUp animated">
+	<li><span class="fa fa-sign-in"></span><a href="/AccountLogin/tabid/176/Default.aspx?returnurl=%2fHome.aspx">LOGIN</a></li>
+	<li><span class="fa fa-list-alt"></span><a href="/MyAccount.aspx">MY ACCOUNT</a></li>
+	
+	<!--<li><span class="fa fa-search"></span><a href="/SearchResults.aspx">SEARCH</a></li>-->
+	<li><span class="fa fa-desktop"></span><a href="https://intelliearth.harrisgeospatial.com/" target="new" onclick="ga('send', 'event', 'site action / search sat imagery', 'click', 'search portal> Footer'])">SEARCH PORTAL</a></li>
+	<li><span class="fa fa-clipboard"></span><a href="/Request-a-Quote">REQUEST A QUOTE</a></li>
+</ul></div>
+
+
+
+
+</div><!-- End_Module_10327 --></div>
+  </div>
+  <!--Container Content End--> 
+</div>
+
+
+
+
+
+
+</div></div>
+        </div>
+        <div class="col-sm-4  ">
+          <div id="dnn_FootPaneB" class="FootPaneB  "><div class="DnnModule DnnModule-EasyDNNnews DnnModule-10326"><a name="10326"></a>
+
+<div class="Home04-Container02"> 
+  <!--Container Title-->
+  <div class="dnntitle">
+      <span id="dnn_ctr10326_dnnTITLE6_titleLabel" class="Home04-heading02">MOST RECENT</span>
+
+
+
+  </div>
+  <!--Container Title End--> 
+  <!--Container Content-->
+  <div class="contentmain1">
+    <div id="dnn_ctr10326_ContentPane" class="contentpane"><!-- Start_Module_10326 --><div id="dnn_ctr10326_ModuleContent">
+	
+
+<script type="text/javascript">
+	/*<![CDATA[*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	eds3_5_jq(function ($) {
+		if (typeof edn_fluidvids != 'undefined')
+			edn_fluidvids.init({
+				selector: ['.edn_fluidVideo iframe'],
+				players: ['www.youtube.com', 'player.vimeo.com']
+			});
+		
+		
+		
+
+	});
+	/*]]>*/
+</script>
+
+
+
+<div class="eds_news_module_10326 news eds_subCollection_news eds_news_NewsOne eds_template_List_Article_Featured eds_styleSwitchCriteria_module-10326">
+	
+
+	
+
+	<div id="dnn_ctr10326_ViewEasyDNNNewsMain_ctl00_pnlListArticles">
+		
+		
+		<!--ArticleRepeat:Before:-->
+<div class="edn_10326_article_list_wrapper"><!--ArticleTemplate-->
+<div style="border-bottom: 1px dashed #bfbfbf; padding-top: 5px; margin-left: 10px; margin-right: 10px; "">
+<table style="width:100%;">
+    <tbody>
+        <tr>
+            <!--<td><div style="display:none;">
+			<img class="article_image"  style="padding-right: 25px;" alt="[" src="[" /></a>
+			</div></td>-->
+        </tr>
+        <tr>
+            <td><h3 style="font-size: 16px;"><a style="font-weight: 500; color: #283030;" href="https://www.l3harrisgeospatial.com/Learn/Whitepapers/APAC-Whitepaper" target="_self">Enhancing Situational Awareness with SAR Data</a></h3>
+            <div style="color: #a2a2a2; font-size: 12px; margin-top: -12px; margin-bottom: 5px;">4/21/2021</div>
+        </tr>
+       
+        <tr>
+            <td><p style="font-size: 12px;">
+    
+    <a href="https://www.l3harrisgeospatial.com/Learn/Whitepapers/APAC-Whitepaper" target="_self">more &raquo;</a>
+</p></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<!--ArticleTemplate-->
+<div style="border-bottom: 1px dashed #bfbfbf; padding-top: 5px; margin-left: 10px; margin-right: 10px; "">
+<table style="width:100%;">
+    <tbody>
+        <tr>
+            <!--<td><div style="display:none;">
+			<img class="article_image"  style="padding-right: 25px;" alt="[" src="[" /></a>
+			</div></td>-->
+        </tr>
+        <tr>
+            <td><h3 style="font-size: 16px;"><a style="font-weight: 500; color: #283030;" href="https://www.l3harrisgeospatial.com/Learn/Case-Studies/Case-Studies-Detail/ArtMID/10204/ArticleID/24031/Enhancing-Situational-Awareness-with-SAR-Data" target="_self">Enhancing Situational Awareness with SAR Data</a></h3>
+            <div style="color: #a2a2a2; font-size: 12px; margin-top: -12px; margin-bottom: 5px;">4/19/2021</div>
+        </tr>
+       
+        <tr>
+            <td><p style="font-size: 12px;">
+    
+
+
+The use of Synthetic Aperture Radar (SAR) data has become increasingly popular due to its many...
+    <a href="https://www.l3harrisgeospatial.com/Learn/Case-Studies/Case-Studies-Detail/ArtMID/10204/ArticleID/24031/Enhancing-Situational-Awareness-with-SAR-Data" target="_self">more &raquo;</a>
+</p></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div><!--ArticleRepeat:After:-->
+
+		
+	
+	</div>
+
+	
+
+	
+	
+	
+	
+</div>
+
+
+
+
+
+
+
+
+
+
+</div><!-- End_Module_10326 --></div>
+  </div>
+  <!--Container Content End--> 
+</div>
+
+
+
+
+
+
+</div></div>
+        </div>
+        <div class="col-sm-4  ">
+          <div id="dnn_FootPaneC" class="FootPaneC  "><div class="DnnModule DnnModule-DNN_HTML DnnModule-10163 DnnVersionableControl"><a name="10163"></a>
+
+<div class="Home04-Container02"> 
+  <!--Container Title-->
+  <div class="dnntitle">
+      <span id="dnn_ctr10163_dnnTITLE6_titleLabel" class="Home04-heading02">SIGN UP &amp; STAY INFORMED</span>
+
+
+
+  </div>
+  <!--Container Title End--> 
+  <!--Container Content-->
+  <div class="contentmain1">
+    <div id="dnn_ctr10163_ContentPane" class="contentpane"><!-- Start_Module_10163 --><div id="dnn_ctr10163_ModuleContent">
+	<div id="dnn_ctr10163_HtmlModule_lblContent"><div class="promo-box12 animation scaleUp animated">
+	<p>Sign up to receive the latest news, events, technologies and special offers.
+	</p>
+	<a href="#signup" class="LightBox_Box btn" onclick="ga('send', 'event', 'Footer - Sign Up', 'click', 'RECEIVE NEWS AND UPDATES FROM HARRIS GEOSPATIAL SOLUTIONS'])">SIGN ME UP</a>
+</div>
+<div id="signup" class="signup-popup mfp-with-anim mfp-hide">
+	<object data="/Company/News/SignUpforNewsUpdates.aspx" width="100%" height="840px"><embed src="https://www.harrisgeospatial.com/Company/News/SignUpforNewsUpdates.aspx" width="100%" height="840px">     Error: form could not be displayed.</object>
+</div>
+<div class="home04-social02">
+	<a class="twitter" href="https://twitter.com/geobyharris" target="_blank"><span class="fa fa-twitter"></span></a>
+	<a class="facebook" href="https://www.facebook.com/harrisgeospatialsolutions" target="_blank"><span class="fa fa-facebook" target="_blank"></span></a>
+	<a class="youTube" href="https://www.youtube.com/user/ExelisVIS" target="_blank"><span class="fa fa-youtube" target="_blank"></span></a>
+	<a class="linkedIn" href="https://www.linkedin.com/company/harrisgeospatialsolutions" target="_blank"><span class="fa fa-linkedin-square" target="_blank"></span></a>
+	<a class="instagram" href="https://www.instagram.com/harrisgeospatials/" target="_blank"><span class="fa fa-instagram" target="_blank"></span></a>
+</div></div>
+
+
+
+
+</div><!-- End_Module_10163 --></div>
+  </div>
+  <!--Container Content End--> 
+</div>
+
+
+
+
+
+
+</div></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <div id="dnn_FootPaneD" class="FootPaneD   DNNEmptyPane"></div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div id="dnn_FootPaneE" class="FootPaneE   DNNEmptyPane"></div>
+        </div>
+        <div class="clearfix visible-sm"></div>
+        <div class="col-md-3 col-sm-6">
+          <div id="dnn_FootPaneF" class="FootPaneF   DNNEmptyPane"></div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div id="dnn_FootPaneG" class="FootPaneG   DNNEmptyPane"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="dnn_FootPaneH" class="FootPaneH   DNNEmptyPane"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div id="dnn_FootPaneI" class="FootPaneI   DNNEmptyPane"></div>
+        </div>
+        <div class="col-sm-6">
+          <div id="dnn_FootPaneJ" class="FootPaneJ   DNNEmptyPane"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-8">
+          <div id="dnn_FootPaneK" class="FootPaneK   DNNEmptyPane"></div>
+        </div>
+        <div class="col-sm-4">
+          <div id="dnn_FootPaneL" class="FootPaneL   DNNEmptyPane"></div>
+        </div>
+      </div>
+    </div>
+    <div id="dnn_Full_Screen_FootPaneB" class="Full_Screen_FootPaneB   DNNEmptyPane"></div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="footer_bottom  ">
+    <div class="footer_bottom_bg"></div>
+    <div class="dnn_layout clearfix">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="dnn_FooterBottomPaneA" class="FooterBottomPaneA   DNNEmptyPane"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div id="dnn_FooterBottomPaneB" class="FooterBottomPaneB   DNNEmptyPane"></div>
+        </div>
+        <div class="col-sm-6">
+          <div id="dnn_FooterBottomPaneC" class="FooterBottomPaneC   DNNEmptyPane"></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer_line"></div>
+    <div class="dnn_layout clearfix">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="dnn_FooterBottomPaneD" class="FooterBottomPaneD  "><div class="DnnModule DnnModule-DNN_HTML DnnModule-10160 DnnVersionableControl"><a name="10160"></a>
+<div class="White">
+     <div id="dnn_ctr10160_ContentPane" class="contentpane"><!-- Start_Module_10160 --><div id="dnn_ctr10160_ModuleContent">
+	<div id="dnn_ctr10160_HtmlModule_lblContent"><div class="home06-linklist pb-10"> <a href="/Company/AboutHarrisGeospatialSolutions.aspx">ABOUT US</a> <a href="/Learn/Blogs.aspx">BLOG</a> <a href="/Support/SelfHelpTools/HelpArticles.aspx">FAQ</a> <a href="/Support.aspx">SUPPORT</a> <a href="/Support/SelfHelpTools.aspx">SELF HELP TOOLS</a> <a href="/MyAccount/Downloads.aspx">DOWNLOADS</a> <a href="/Support/Forums.aspx">FORUM</a>
+</div></div>
+
+
+
+
+</div><!-- End_Module_10160 --></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+        </div>
+      </div>
+      <div class="copyright_style">
+        <span id="dnn_dnnCOPYRIGHT_lblCopyright" class="footer  ">© 2021 Harris Geospatial Solutions, Inc.</span>
+
+       <span class="sep  ">|</span>&nbsp;<a href="https://www.l3harrisgeospatial.com/Company/Legal.aspx">Legal</a>
+        
+        
+      </div>
+      <div id="dnn_FooterPane" class="FooterPane  "><div class="DnnModule DnnModule-DNN_HTML DnnModule-10275 DnnVersionableControl"><a name="10275"></a>
+<div class="White">
+     <div id="dnn_ctr10275_ContentPane" class="contentpane"><!-- Start_Module_10275 --><div id="dnn_ctr10275_ModuleContent">
+	<div id="dnn_ctr10275_HtmlModule_lblContent"><a href="/MyAccount.aspx" style="font-size: 16px;">My Account</a>    |    <a href="/Company/ContactUs.aspx" style="font-size: 16px;" rel="font-size: 16px;">Contact Us</a>   </div>
+
+
+
+
+</div><!-- End_Module_10275 --></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div></div>
+    </div>
+  </div>
+</footer>
+<div id="to_top" class="  backtop03"><span></span></div>
+<!-- Footer End --> 
+
+    <!-- Footer end-->
+  </div>
+</div>
+<script type="text/javascript" src="/Portals/_default/Skins/20073-UnlimitedColorsPack-055/scripts/script.js" ></script>
+<script type="text/javascript" src="/Portals/_default/Skins/20073-UnlimitedColorsPack-055/scripts/custom.js" ></script>
+<script type="text/javascript">
+
+if(mapapikey && mapapikey!=""){
+}else{
+	var mapapikey="";
+}
+
+</script>
+
+<link rel="stylesheet" type="text/css" href="/Portals/64/Skins/OnePageSkin/source/cssmap-continents/cssmap-continents.css" media="screen" />
+<script type="text/javascript" src="/Portals/_default/Skins/20073-UnlimitedColorsPack-055/js/jquery.cssmap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        // CSSMap;
+        $("#map-continents").CSSMap({
+            "size": 1450,
+            "tooltips": "floating-top-center",
+            "responsive": "auto",
+            "agentsList": {
+                "enable": true,
+                "agentsListId": "#demo-agents",
+                "agentsListSpeed": 100,
+                "agentsListOnHover": false
+            }
+        });
+        // END OF THE CSSMap;
+
+    });
+</script>
+
+
+
+<script defer="defer" async="async">
+    (function () {
+        var cx = '004894864011311152658:w-wdn_a1yf8';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+    })();
+</script>
+<script src="https://play.vidyard.com/v0/api.js" defer="defer" async="async"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-592486-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-592486-4' , { 'linker': { 'domains': ['intelliearth.harrisgeospatial.com']}});</script>
+
+<!-- End Google Analytics -->
+
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1037172293048521&ev=PageView&noscript=1"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+<script type="text/javascript" src="https://analytics.clickdimensions.com/ts.js" defer="defer" async="async"> </script>
+<script type="text/javascript" defer="defer" async="async">
+    var cdAnalytics = new clickdimensions.Analytics('analytics.clickdimensions.com');
+    cdAnalytics.setAccountKey('aCX4FfHetL02EiFYy1Habi');
+    cdAnalytics.setDomain('l3harrisgeospatial.com');
+    cdAnalytics.setScore(typeof (cdScore) == "undefined" ? 0 : (cdScore == 1 ? null : cdScore));
+    cdAnalytics.trackPage();
+ </script>
+<!-- BING -->
+<script defer="defer" async="async">(function (w, d, t, r, u) { var f, n, i; w[u] = w[u] || [], f = function () { var o = { ti: "5441847" }; o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad") }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null) }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i) })(window, document, "script", "//bat.bing.com/bat.js", "uetq");</script>
+<!-- END BING -->
+    <!--<script defer="defer" async="async">(function (w, d, t, r, u) { var f, n, i; w[u] = w[u] || [], f = function () { var o = { ti: "5669047" }; o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad") }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null) }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i) })(window, document, "script", "//bat.bing.com/bat.js", "uetq");</script><noscript><img src="//bat.bing.com/action/0?ti=5669047&Ver=2" height="0" width="0" style="display:none; visibility: hidden;" /></noscript>-->
+<!-- Google Tag Manager -->
+<script>(function (w, d, s, l, i) {
+w[l] = w[l] || []; w[l].push({
+'gtm.start':
+new Date().getTime(), event: 'gtm.js'
+}); var f = d.getElementsByTagName(s)[0],
+j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-WNCZRSM');</script>
+<!-- End Google Tag Manager -->
+<!-- LinkedIn Insight Tag -->
+<script type="text/javascript"  defer="defer" async="async">
+    _linkedin_partner_id = "96245";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+</script><script type="text/javascript" defer="defer" async="async">
+             (function () {
+                 var s = document.getElementsByTagName("script")[0];
+                 var b = document.createElement("script");
+                 b.type = "text/javascript"; b.async = true;
+                 b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+                 s.parentNode.insertBefore(b, s);
+             })();
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=96245&fmt=gif" />
+</noscript>
+<!-- End LinkedIn Insight Tag -->
+    <!-- Global site tag (gtag.js) - Google Ads: 963837797 -->
+    <script async=async src="https://www.googletagmanager.com/gtag/js?id=AW-963837797"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'AW-963837797');
+    </script>
+    <!-- End Global site tag (gtag.js) -->
+
+<!-- Global site tag (gtag.js) - Google Ads: 851424079 MAPMART-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-851424079"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-851424079');
+</script>
+<!-- END Global site tag (gtag.js) MAPMART-->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<style type="text/css">.cc-revoke, .cc-window {
+    font-family: 'Raleway';
+    font-size: 14px;
+
+}</style>
+<script>
+    window.addEventListener("load", function () {
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#000000",
+                    "text": "#ffffff"
+                },
+                "button": {
+                    "background": "transparent",
+                    "text": "#c8102e",
+                    "border": "#c8102e"
+                }
+            },
+            "position": "top",
+            "static": true,
+            "content": {
+                "message": "We use cookies to understand how you use our site and to improve your experience. By continuing to use our site you accept our use of cookies.",
+                "dismiss": "I Accept",
+                "link": "View the Privacy Policy here. ",
+                "href": "https://www.l3harrisgeospatial.com/Company/Legal.aspx#Collection"
+            }
+        })
+    });
+</script>
+        <input name="ScrollTop" type="hidden" id="ScrollTop" />
+        <input name="__dnnVariable" type="hidden" id="__dnnVariable" autocomplete="off" value="`{`trackLinks`:`false`,`__scdoff`:`1`,`sf_siteRoot`:`/`,`sf_tabId`:`2716`,`evoq_TabId`:`2716`,`evoq_PageLanguage`:`en-US`,`evoq_ContentItemId`:`-1`,`evoq_UrlReferrer`:``,`evoq_UrlPath`:`https%3a%2f%2fwww.l3harrisgeospatial.com%2fLearn%2fBlogs%2fBlog-Details%2fArtMID%2f10198%2fArticleID%2f15691%2fThe-Many-Band-Combinations-of-Landsat-8`,`evoq_UrlQuery`:`%3fTabId%3d2716%26ArtMID%3d10198%26ArticleID%3d15691%26The-Many-Band-Combinations-of-Landsat-8%26language%3den-US`,`evoq_ContentItemReferrer`:`-1`,`evoq_PersonalizedUrlReferrer`:`-1`,`evoq_DisableAnalytics`:`False`}" />
+        <input name="__RequestVerificationToken" type="hidden" value="mZE2UiTjahWFhkjiw8YFCSDlJ3vhjcKU2N0Zgf1GLbM1WQ-uqo2MdXCBMx2xmuSk7NtD2g2" />
+    </form>
+    <!--CDF(Javascript|/js/dnncore.js?cdv=792|DnnBodyProvider|100)--><!--CDF(Css|/Resources/Shared/stylesheets/dnndefault/7.0.0/default.css?cdv=792|DnnPageHeaderProvider|5)--><!--CDF(Css|/Portals/_default/Skins/20073-UnlimitedColorsPack-055/skin.css?cdv=792|DnnPageHeaderProvider|15)--><!--CDF(Css|/Portals/_default/Skins/20073-UnlimitedColorsPack-055/InsidePage.css?cdv=792|DnnPageHeaderProvider|20)--><!--CDF(Javascript|/DesktopModules/DNNGo_xPlugin/Resource/js/dnngo-xplugin.js?cdv=792|DnnBodyProvider|100)--><!--CDF(Css|/Portals/_default/Containers/20073-UnlimitedColorsPack-055/container.css?cdv=792|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/20073-UnlimitedColorsPack-055/container.css?cdv=792|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/20073-UnlimitedColorsPack-055/container.css?cdv=792|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/20073-UnlimitedColorsPack-055/container.css?cdv=792|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/20073-UnlimitedColorsPack-055/container.css?cdv=792|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/_default/Containers/20073-UnlimitedColorsPack-055/container.css?cdv=792|DnnPageHeaderProvider|25)--><!--CDF(Css|/Portals/0/portal.css?cdv=792|DnnPageHeaderProvider|35)--><!--CDF(Css|https://fonts.googleapis.com/css?family=Raleway&cdv=792|DnnPageHeaderProvider|100)--><!--CDF(Css|/DesktopModules/DNNGo_xPlugin/Resource/css/jquery.mmenu.css?cdv=792|DnnPageHeaderProvider|100)--><!--CDF(Css|/Resources/Search/SearchSkinObjectPreview.css?cdv=792|DnnPageHeaderProvider|10)--><!--CDF(Javascript|/Resources/Search/SearchSkinObjectPreview.js?cdv=792|DnnBodyProvider|100)--><!--CDF(Javascript|/js/dnn.js?cdv=792|DnnBodyProvider|12)--><!--CDF(Javascript|/js/dnn.servicesframework.js?cdv=792|DnnBodyProvider|100)--><!--CDF(Javascript|/DesktopModules/EasyDNNNews/static/eds_jquery/eds_jq.js?cdv=792|DnnPageHeaderProvider|5)--><!--CDF(Css|/DesktopModules/EasyDNNNews/static/rateit/css/rateit.css?cdv=792|DnnPageHeaderProvider|100)--><!--CDF(Javascript|/DesktopModules/EasyDNNNews/static/rateit/js/jquery.rateit_2.2.js?cdv=792|DnnBodyProvider|100)--><!--CDF(Css|/DesktopModules/EasyDNNNews/static/common/common.css?cdv=792|DnnPageHeaderProvider|101)--><!--CDF(Javascript|/DesktopModules/EasyDNNNews/js/jquery.cookie_2.2.js?cdv=792|DnnBodyProvider|101)--><!--CDF(Javascript|/DesktopModules/EasyDNNNews/static/fluidvids/fluidvids_custom.min.js?cdv=792|DnnBodyProvider|102)--><!--CDF(Css|/DesktopModules/EasyDNNnews/Templates/_default/Galore/Galore.css?cdv=792|DnnPageHeaderProvider|16)--><!--CDF(Javascript|/DesktopModules/EasyDNNNews/static/EasyDnnSolutions/EasyDnnSolutions_1.1_2.2.js?cdv=792|DnnBodyProvider|103)--><!--CDF(Javascript|/DesktopModules/EasyDNNNews/static/eds_jquery/eds_jq.js?cdv=792|DnnPageHeaderProvider|5)--><!--CDF(Css|/DesktopModules/EasyDNNNews/static/rateit/css/rateit.css?cdv=792|DnnPageHeaderProvider|100)--><!--CDF(Css|/DesktopModules/EasyDNNNews/static/common/common.css?cdv=792|DnnPageHeaderProvider|101)--><!--CDF(Css|/DesktopModules/EasyDNNnews/Templates/_default/NewsOne/NewsOne.css?cdv=792|DnnPageHeaderProvider|16)--><!--CDF(Javascript|/Resources/libraries/jQuery/03_05_01/jquery.js?cdv=792|DnnPageHeaderProvider|5)--><!--CDF(Javascript|/Resources/libraries/jQuery-Migrate/03_02_00/jquery-migrate.js?cdv=792|DnnPageHeaderProvider|6)-->
+    
+</body>
+</html>
