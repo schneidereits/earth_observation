@@ -140,6 +140,7 @@ library(rgdal)
 library(hexbin)
 library(ggplot2)
 library(reshape2)
+library(tidyverse)
 
 
 ####################################################################
@@ -149,25 +150,31 @@ library(reshape2)
 img <- stack('data/gcg_eo_s03/sr_data/LC081890252014031001T1-SC20170927101754/LC081890252014031001T1-SC20170927101754_sr_masked_crop.tif')
 
 names(img) <- c("blue", "green", "red", "nir", "swir1", "swir2")
+plot(img)
 
 # Read training points, the following code assumes that it contains only the class attribute
 # in readOGR, dsn specifies the path to the folder containing the file (may not end with /), 
 # layer specifies the name of the shapefile without extension (.shp)
-train <- readOGR(dsn='course.dir', layer='training_points')
+train <- readOGR(dsn='data/gcg_eo_s03/sr_data', layer='training_points')
 
 # Extract image values at training point locations
-train.sr <- extract(img, train, sp=T)
+train.sr <- raster::extract(img, train, sp=T)
 
 # Convert to data.frame and convert classID into factor
 train.df <- as.data.frame(train.sr)
 train.df$classID <- as.factor(train.df$classID)
+train.df <- train.df[-1,]
 
 ####################################################################
 ### Create boxplots of reflectance grouped by land cover class
 
 # Melt dataframe containing point id, classID, and 6 spectral bands
 spectra.df <- melt(train.df, id.vars='classID', 
-                   measure.vars=c('blue', 'green', 'red', 'nir', 'swir1', 'swir2'))
+                   measure.vars=c('blue', 'green', 'red', 'nir', 'swir1', 'swir2')) %>% 
+na.omit(classID)
+
+# melt is an antiquated way of going from wide to long format data
+
 
 # Create boxplots of spectral bands per class
 ggplot(spectra.df, aes(x=variable, y=value, color=classID)) +
@@ -199,3 +206,47 @@ ggplot() +
   scale_y_continuous(yband, limits=c(-10, quantile(sr.march.val[yband], 0.98, na.rm=T))) +
   scale_color_manual(values=c("red", "blue", "green", "purple")) +
   theme_bw()
+
+
+#############################################################################
+#tasseled cap
+#############################################################################
+
+names(tcc_stack) <- c("brightness", "greenness", "wetness")
+# Extract image values at training point locations
+train.sr <- raster::extract(tcc_stack, train, sp=T)
+
+
+
+# Convert to data.frame and convert classID into factor
+train.df <- as.data.frame(train.sr)
+train.df$classID <- as.factor(train.df$classID)
+train.df <- train.df[-1,]
+
+####################################################################
+### Create boxplots of reflectance grouped by land cover class
+
+# Melt dataframe containing point id, classID, and 6 spectral bands
+spectra.df <- melt(train.df, id.vars='classID', 
+                   measure.vars=c("brightness", "greenness", "wetness")) %>% 
+  na.omit(classID)
+
+# melt is an antiquated way of going from wide to long format data
+
+
+# Create boxplots of spectral bands per class
+ggplot(spectra.df, aes(x=variable, y=value, color=classID)) +
+  geom_boxplot() +
+  theme_bw()
+
+# Do the Tasseled Cap components allow for discriminating your target classes?
+
+# Yes the Tasseled Cap components allow for discriminating your target classes. 
+# Especially class for has very distinct spectral features, as well as class 3.
+# When differentiating deciduous and mixed forest plots, the tasseled cap components 
+# do less well at distinguishing  between groups. 
+
+#Which classes are likely difficult to separate?
+
+# see above...
+# as a recap though, classes one and two (deciduous and mixed forest)
