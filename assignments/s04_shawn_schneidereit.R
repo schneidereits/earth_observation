@@ -1,52 +1,61 @@
-##############################################################################
-# MSc Earth Observation Assignment [Session 4]
+#############################################################################
+# MSc Earth Observation Assignment 4
 # [Shawn Schneidereit]
 #############################################################################
 
-# Load the package ----
-library(raster)
+#############################################################################
 library(rgdal)
-library(tidyverse)
+library(raster)
+library(lubridate)
+library(ggplot2)
+source('') #path to the parametric_compositing function including filename.R
 
+# In case you run into memory issues
+# change raster options to store large rasters in temp files on disk
+# rasterOptions(maxmemory = 1e12)
 
-
-##############################################################################
-
-# Best-pixel compositing
+######## Define the folder that contains your data...
+data.path <- 'course.dir/S04/data/'
 
 #############################################################################
-
-
-
-##############################################################################
-# 1) Parameterization
+# 1)
 #############################################################################
 
+sr <- list.files(paste0(data.path, 'sr_data'), pattern='.tif$', full.names=T, recursive=F)
+fmask <- list.files(paste0(data.path, 'fmask'), pattern='.tif$', full.names=T, recursive=F)
+cd <- list.files(paste0(data.path, 'cloud_dist'), pattern='.tif$', full.names=T, recursive=F)
 
-##############################################################################
-# 2) Defining target dates and parameters
+sta <- nchar(paste0(data.path,'sr_data/LT05228082')) + 1
+end <- sta + 6
+
+dates <- as.Date(substr(sr, sta, end), format='%Y%j')
+
+sr.sorted <- sr[order(dates)]
+cd.sorted <- cd[order(dates)]
+
+img_list <- data.frame('image_files'=as.character(sr.sorted), 
+                       'cloud_dist_files'=as.character(cd.sorted),
+                       'date'=sort(dates), 
+                       'DOY'=yday(sort(dates)), 
+                       'year'=year(sort(dates)))
+
 #############################################################################
-
-
-
-##############################################################################
-# 3) Exploring the script and adding documentation
+# 2)
 #############################################################################
+target_date_1 <- ymd('YYYYMMDD')
+target_date_2 <- ymd('YYYYMMDD')
 
+W_DOY <- 0.0
+W_year <- 0.0
+W_cloud_dist <- 0.0
 
+max_DOY_offset <- 0
+max_year_offset <- 0
 
-##############################################################################
-# 4) Visual inspection and evaluation of results
-#############################################################################
+min_cloud_dist <- 0
+max_cloud_dist <- 0
 
-
-
-##############################################################################
-# 5) Voluntary assignment: Improving the user-friendliness of the script
-#############################################################################
-
-
-
-##############################################################################
-# 6) Voluntary assignment: Second run for target date 2
-#############################################################################
+composite_1 <- parametric_compositing(img_list, target_date_1, 
+                                      W_DOY, W_year, W_cloud_dist, 
+                                      max_DOY_offset, max_year_offset, 
+                                      min_cloud_dist, max_cloud_dist)
