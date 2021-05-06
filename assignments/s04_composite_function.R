@@ -82,11 +82,11 @@ parametric_compositing <- function(img_list, target_date,
   
   # The suitability score of each pixel normalized on a scale from 0-1
   cloud_score <- (cloud_dist - min_cloud_dist) / (max_cloud_dist - min_cloud_dist)
-
+plot(cloud_score)
   
   # Final score for each pixel, using the given equation
   obs_score <- img_list$DOY_score[ix] * W_DOY + img_list$year_score[ix] * W_year + cloud_score * W_cloud_dist
-  
+  plot(obs_score)
   # select the "best observation" pixel with the highest overall score 
   select <- which.max(obs_score)
   
@@ -113,6 +113,7 @@ parametric_compositing <- function(img_list, target_date,
     fill_image.masked <- mask(fill_image, select, maskvalue=i, inverse=T, updatevalue=0, datatype='INT2S')
     fill_image.masked[is.na(fill_image.masked)] <- 0
     composite <- composite + fill_image.masked
+  plot(fill_image.masked)
     
   }
   
@@ -136,7 +137,7 @@ parametric_compositing <- function(img_list, target_date,
   # and annual/seasonal consistency overview layer 
   output <- stack(composite_na, select_DOY, select_year)
   print(paste('End of compositing process: ', Sys.time())) # indicate the end of our computation 
-
+plot(output)
   
   # return only our final composite layer after executing the composite function script
   return(output)
