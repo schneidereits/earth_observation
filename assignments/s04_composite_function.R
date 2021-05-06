@@ -93,6 +93,7 @@ plot(cloud_score)
   # Based on the overlap of all images, we select the only images that contribute a "best" 
   # pixel to our final composite image 
   candidates <- unique(select)
+  print(paste(length(unique(select)), "images where selected for the composite"))
   
   #############################################################################
   # Fill composite image with pixels from the candidate images
@@ -127,11 +128,17 @@ plot(cloud_score)
   
   # reclassify each pixel with the DOY value instead of the i of the image 
   rcl_DOY <- matrix(ncol=2, data=c(candidates, img_list$DOY[ix[candidates]])) # overview of which DOY is in each image
+  print(paste("images from DOY", unique(rcl_DOY[,2]), "were selected for the composite"))
+  
   select_DOY <- reclassify(select, rcl_DOY, datatype = 'INT2S')
   
   # reclassify each pixel with the year value instead of the i of the image 
   rcl_year <- matrix(ncol=2, data=c(candidates, img_list$year[ix[candidates]]))
+  print(paste("images from", unique(rcl_year[,2]), "were selected for the composite"))
+  
+  
   select_year <- reclassify(select, rcl_year)
+  
   
   # create our final composite image with all 6 land-sat layer 
   # and annual/seasonal consistency overview layer 
