@@ -8,17 +8,19 @@ library(rgdal)
 library(raster)
 library(lubridate)
 library(ggplot2)
-source('') #path to the parametric_compositing function including filename.R
+source("assignments/s04_composite_function.R") #path to the parametric_compositing function including filename.R
 
 # In case you run into memory issues
 # change raster options to store large rasters in temp files on disk
 # rasterOptions(maxmemory = 1e12)
 
 ######## Define the folder that contains your data...
-data.path <- 'course.dir/S04/data/'
+data.path <- 'data/gcg_eo_s04/'
+
+
 
 #############################################################################
-# 1)
+# 1) Setting data source
 #############################################################################
 
 sr <- list.files(paste0(data.path, 'sr_data'), pattern='.tif$', full.names=T, recursive=F)
@@ -40,20 +42,22 @@ img_list <- data.frame('image_files'=as.character(sr.sorted),
                        'year'=year(sort(dates)))
 
 #############################################################################
-# 2)
+# 2) User input of equation variables 
 #############################################################################
 target_date_1 <- ymd('YYYYMMDD')
+target_date_1 <- ymd('20150605')
 target_date_2 <- ymd('YYYYMMDD')
+target_date_2 <- ymd('20151610')
 
-W_DOY <- 0.0
-W_year <- 0.0
-W_cloud_dist <- 0.0
+W_DOY <- 0.2
+W_year <- 0.3
+W_cloud_dist <- 0.5
 
-max_DOY_offset <- 0
-max_year_offset <- 0
+max_DOY_offset <- 30
+max_year_offset <- 3
 
-min_cloud_dist <- 0
-max_cloud_dist <- 0
+min_cloud_dist <- 50
+max_cloud_dist <- 100
 
 composite_1 <- parametric_compositing(img_list, target_date_1, 
                                       W_DOY, W_year, W_cloud_dist, 
