@@ -63,3 +63,25 @@ composite_1 <- parametric_compositing(img_list, target_date_1,
                                       W_DOY, W_year, W_cloud_dist, 
                                       max_DOY_offset, max_year_offset, 
                                       min_cloud_dist, max_cloud_dist)
+writeRaster(composite_1, "~/Documents/humbolt/semester_02/earth_observation/data/gcg_eo_s04/composite_1",
+            format = "GTiff", 
+            datatype = "INT2S",
+            overwrite = T)
+
+#############################################################################
+# 4) Visual inspection and evaluation of results
+#############################################################################
+
+# 1) What worked out well. What did not? 
+
+# Water bodies did not consistently get displayed, indicating an error selecting
+# errors when selecting pixels in the image composting 
+
+# 2) How could the quality of the composites be improved? 
+
+# We could select more sensible target DOY/year and max offsets for our application 
+# goals
+
+# 
+
+
