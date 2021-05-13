@@ -80,7 +80,7 @@ df <- as.data.frame(spatial_df) %>%
 df$classID <- as.factor(df$classID)
 
 
-rf3 <- randomForest(classID~., df)
+rf3 <- randomForest(classID~., df, ntree= 2000)
 
 #############################################################################
 # 2) Investigating model performance
@@ -103,12 +103,12 @@ mean(rf3$err.rate[,1])
 # The aim is to find the spot where the error rate stabilises (converges) and 
 # adding more trees would no longer improve accuracy.
 
-OOB_plot <- as.data.frame((rf$err.rate[,1])) 
+OOB_plot <- as.data.frame((rf3$err.rate[,1])) 
 names(OOB_plot) <- "error"
 
 OOB_plot <- OOB_plot %>% 
   mutate(cumulative_sum = cummean(error),
-         n_tree = c(1:20000))
+         n_tree = c(1:2000))
 
 ggplot(OOB_plot, aes(n_tree, cumulative_sum)) +
   geom_line() +
@@ -118,8 +118,16 @@ ggplot(OOB_plot, aes(n_tree, cumulative_sum)) +
 
 # In the model with the lowest OOB error, Which of the four classes has the highest OOB error?
   
+mean(rf3$err.rate[,2]) # deciduous
+mean(rf3$err.rate[,3]) # mixed
+mean(rf3$err.rate[,4]) # coniferous 
+mean(rf3$err.rate[,5]) # non-forest
+
+# Coniferous had the lowest OOB, while deciduous forest had the highest OOB
+
 # In case you are not satisfied with your model performance, consider joining forces with another team and merge your training datasets. Feel free to experiment and document your findings.
 
+# we are satisfied 
 
 
 
@@ -127,17 +135,107 @@ ggplot(OOB_plot, aes(n_tree, cumulative_sum)) +
 # 3) Final model parametrization and variable importances
 #############################################################################
 
+# Train a final model with the best combination of images and ntrees.
+
+rfm <- randomForest(classID~., df, ntree= 1000)
+
+# Investigate the variable importances using varImpPlot(). 
+# Use partialPlot() to produce partial dependence plots for your most important predictor and all four classes. Can you explain the differences between classes?
+  
+varImpPlot(rfm)
+par(mfrow=c(2,2))
+partialPlot(rfm,  pred.data = df, x.var= DOY196.1, which.class=1)
+partialPlot(rfm,  pred.data = df, x.var= DOY196.1, which.class=2)
+partialPlot(rfm,  pred.data = df, x.var= DOY196.1, which.class=3)
+partialPlot(rfm,  pred.data = df, x.var= DOY196.1, which.class=4)
+dev.off()
+
+# Based on the partial plot of our best variable DOY196.1 (blue band)
+# we can see why non-forest plots had the lowest OOB in the random forest
 
 #############################################################################
 # 4) Classification
 #############################################################################
+
+### Run predict() to store RF predictions
+map <- predict(composite_combo, rfm)
+
+### Write classification to disk
+writeRaster(map, "data/gcg_eo_s05/RF_predictions.tif",  format = "GTiff", 
+            datatype = "INT2S",
+            overwrite = T)
+
+### Run predict() to store RF probabilities for class 1-4
+rfp <- predict(composite_combo, rfm, type = "prob", index=c(1:4))
+
+### Scale probabilities to integer values 0-100 and write to disk
+writeRaster(rfp*100, "data/gcg_eo_s05/RF_probabilty.tif", 
+            datatype="INT1S", 
+            overwrite=T)
 
 
 #############################################################################
 # Advanced assignment: Automated hyperparameter optimization
 #############################################################################
 
+library(e1071)
+
+# Define accuracy from 5-fold cross-validation as optimization measure
+cv <- tune.control(cross = 5) 
+
+# Use tune.randomForest to assess the optimal combination of ntree and mtry
+rf.tune <- tune.randomForest(classID~., 
+                             data        = df, 
+                             ntree       =750, 
+                             mtry        =c(2:10), 
+                             tunecontrol = cv)
+
+# Store the best model in a new object for further use
+rf.best <- rf.tune$library(e1071)
+
+# Define accuracy from 5-fold cross-validation as optimization measure
+cv <- tune.control(cross = 5) 
+
+# Use tune.randomForest to assess the optimal combination of ntree and mtry
+rf.tune <- tune.randomForest(classID~., 
+                             data = train.df,
+                             ntree=750, 
+                             mtry=c(2:10), 
+                             tunecontrol = cv)
+
+# Store the best model in a new object for further use
+rf.best <- rf.tune$best.model
+
+# Is the parametrization and/or different from your previous model?
+print(rf.best)
+
+
 #############################################################################
 # Advanced assignment: Support-Vector Machines (SVMs)
 #############################################################################
 
+library(e1071)
+
+# Define accuracy from 5-fold cross-validation as optimization measure
+cv <- tune.control(cross = 5) 
+
+# Use tune.svm() for a grid search of the gamma and cost parameters
+svm.tune <- tune.svm(classID~., 
+                     data = df, 
+                     kernel = 'radial', 
+                     gamma = (0.001:1000), 
+                     cost = 10^(-3:3), 
+                     tunecontrol = cv)
+
+# Store the best model in a new object
+svm.best <- svm.tune$best.model
+
+# Which parameters performed best?
+print(svm.best$gamma)
+print(svm.best$cost)
+
+svm_predictions <- predict(composite_combo, svm.best, type = "prob", index=c(1:4))
+
+writeRaster(svm_predictions*1, "data/gcg_eo_s05/RF_svm.tif", 
+            datatype="INT1S", 
+            overwrite=T)
