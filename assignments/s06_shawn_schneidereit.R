@@ -71,7 +71,7 @@ confusionMatrix(data = as.factor(reference_data$RF_prdc),
 # each cell value represents the probability of occurrence on map class i
 # and reference class j
 
-# Apologies for the woefully in-eloquent loop
+# Apologies for the woefully in-eloquent loops
 
 reference_prob <- table(reference_data[2:3]) 
 weights <- c(.215, .16, .2077, .4173)
@@ -118,9 +118,17 @@ library(devtools)
 #install_gitlab(repo='pflugmad/mapac', host='scm.cms.hu-berlin.de', quiet=F, force=T)
 library(mapac)
 
-aa_stratified()
+# compare overall and class-wise user´s and producer´s accuracies of the two 
+# maps. Can you find a notable difference in the performance of RF versus 
+# SVM classification? If so, which?
 
 
+a <- aa_stratified(
+  stratum = reference_data$ref_id,
+  reference = reference_data$RF_prdc,
+  map = reference_data$RF_prdc,
+  h = c("1", "2", "3", "4"),
+  N_h <- c(55126.80, 41048.28, 53244.81, 106987.32))
 
 
 
