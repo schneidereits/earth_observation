@@ -126,6 +126,7 @@ library(caret)
 
 
 ni <- apply(confusion_matrix, 1, sum)  # should be 25 for each class but might be different when calculating sampling size differently
+   
 
 # a)
 confusion_matrix_prob <- confusion_matrix / ni * class_freq$w_i
