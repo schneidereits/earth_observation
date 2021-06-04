@@ -12,6 +12,7 @@ library(rgdal)
 library(raster)
 library(randomForest)
 
+# stack all the temporal metrics
 stack <- stack(paste0("data/gcg_eo_s08/spectemp/TCB/TCB_",c("iqr",
                                                             "max",
                                                             "mean",
@@ -40,19 +41,18 @@ plot(stack)
 
 training_data <- readOGR(dsn='data/gcg_eo_s08/training/training_data_50.shp')
 
+# extract training data point from a temporal metric stack
 spatial_df <- raster::extract(stack, training_data, sp=T) 
 
+# save as df and remove coords
 df <- as.data.frame(spatial_df) %>% 
-  dplyr::select(-coords.x1, -coords.x2) %>% 
-  mutate(classID = as.factor(classID))
-
-df_filtered <- df %>% dplyr::select(classID,TCB_max,TCB_p75)
+  dplyr::select(-coords.x1, -coords.x2)# %>% mutate(classID = as.factor(classID))
 
 df_long <- df %>% 
   pivot_longer(names_to = "variable", values_to = "value", cols = c(2:9)) %>% 
   mutate(classID = as.factor(classID))
 
-#failed attempt
+#failed attempt at visualizing the metrics
 library(readr)
 Landsat_2010_Sensor_Date <- read_delim("data/gcg_eo_s08/ts_stacks/Landsat_2010_Sensor_Date.csv", 
                                        ";", escape_double = FALSE, trim_ws = TRUE)
@@ -84,8 +84,10 @@ ggplot(TCB_df_long, aes(date, value, color=classID)) +
 # Croplands tend to have the highest brightness and lowest variability.
 
 
+
 # We decided that min, iqr, and std where the worst at differentiating 
 # between classes and thus exuded them
+
 
 
 #############################################################################
@@ -104,6 +106,7 @@ ggplot(TCB_df_long, aes(date, value, color=classID)) +
 # specific events, such as the observation date of the minimum value, or 
 # differences between metrics. Be creative!
 
+# boxplot of each of the temporal metics
 ggplot(df_long, aes(y=value, group=classID)) +
   geom_boxplot(aes( color=classID)) +
   facet_wrap(~variable) +
@@ -142,6 +145,9 @@ plot(tcb_median_raster)
 # spectral-temporal metrics. As always, make an informed decision about 
 # the model parameters.
 
+# here is a filtered df with the variables that we thought were most important 
+df_filtered <- df %>% dplyr::select(classID,TCB_max,TCB_p75)
+
 library(e1071)
 # Random Forest model
 # Define accuracy from 5-fold cross-validation as optimization measure
@@ -159,9 +165,12 @@ rf <- randomForest(classID~., df_filtered, ntree= 750, mtry=2)
 
 ### Run predict() to store RF predictions
 map <- predict(stack, rf)
+
+# some visual assesment
 hist(map)
 plot(map)
-# 
+
+# failed attempt at SVM
 # # SVM model
 # 
 # # Define accuracy from 5-fold cross-validation as optimization measure
@@ -208,11 +217,14 @@ reference_data <- readOGR("data/gcg_eo_s08/validation/validation_sample.shp")
 
 reference_data <- as.data.frame(reference_data) %>%  na.omit() #%>% rename(reference  = layer)
 
+# extracting our reference data points from lask weeks mask
 predictions <- raster::extract(last_wk_pred_masked, reference_data[2:3])
 
+# adding our pixel pridctions to the referencedata
 reference_data$predictions <- predictions
 reference_data <- na.omit(reference_data)
 
+# out confusion matrix of the classification
 (confusion_matrix <- table(reference_data[c(1,4)]))
 
 library(caret)
@@ -225,6 +237,7 @@ confusionMatrix(data = as.factor(reference_data[1]),
 #  Area-adjusted accuracy assessment
 freq(map) %>% na.omit()
 
+# class frequency of the pixel types
 class_freq <- as.data.frame(freq(map, useNA = "no"))
 class_freq$w_i <- class_freq$count/sum(class_freq$count)
 sum(class_freq$w_i)
@@ -254,6 +267,8 @@ area_unadjusted <- class_freq$count * (30^2) / 10000
 print(data.frame(class = 1:3, area_unadjusted, area_adjusted))
 
 # B) Combine the resulting map with your forest change map from last week
+
+# Pretty dirty way to do it, but hey it gets the job done...
 
 #stable non forest 
 non_forest <- mask(map, last_wk_pred, maskvalue=c(5), inverse=T)
