@@ -15,6 +15,67 @@ lapply(pck_list, require, character.only = TRUE)
 # 1) Linear spectral mixtures
 #############################################################################
 
+library(readr)
+sli <- read_csv("data/gcg_eo_s09/S2_EM.txt")
+head(sli)
+sli$wavelength <- c(493, 560, 665, 704, 740, 783, 883, 865, 1610, 2190)
+sli_long <- sli %>% 
+  pivot_longer(names_to = "type", values_to = "reflectance", cols = c(2:5))
+
+
+ggplot(sli_long, aes(x=wavelength, y= reflectance, color=type)) +
+  geom_line() +
+  theme_classic()
+  
+ggplot(sli_long, aes(x=type, y= reflectance, color=type)) +
+  geom_boxplot()+
+  theme_classic()
+
+# How do the spectra differ between the classes and why?
+
+# The spectral classes differ significantly between each other, the most 
+# obvious being shade that has a very low reflectance of 100 across all wavelengths.
+# soil has the lowest reflectance out of the remaining three classes
+# PV has a highly variable spectral signature, with high reflectance values in
+# the near IR (due to vegetative material reflectance in this region)
+
+
+# Let´s now model a "mixed pixel". ----
+# We can simply do this be defining proportions of the different surface components.
+fraction_PV <- 0.1
+fraction_NPV <- 0.8
+fraction_soil <- 0.05
+fraction_shade <- 0.05
+
+# Do we violate the assumption that all surface components represent 100% of the surface area?
+if((fraction_PV + fraction_NPV + fraction_soil+ fraction_shade) != 1) print('Fractions don´t sum to 1.')
+
+# Create a linear mixture of the endmember spectra, based on the defined proportions.
+model_spectrum <- fraction_PV * sli$PV + 
+  fraction_NPV * sli$NPV +
+  fraction_soil * sli$soil + 
+  fraction_shade * sli$shade
+
+# We could simulate imperfect measurements by adding random noise.
+noise <- rnorm(10, mean=0, sd=0.02)
+
+# Append the modeled spectrum to the endmembers data.frame
+sli$model_spectrum <- model_spectrum + noise
+
+# Convert the spectra into long format for plotting with ggplot2
+sli_vis <- pivot_longer(sli, -c(band, wavelength)) 
+
+# Visualize the modeled spectrum in comparison to the endmember spectra
+ggplot(sli_vis) + 
+  geom_line(aes(x=wavelength, y=value, color=name, linetype=name))+
+  scale_color_manual(values=c("black", "steelblue", "darkgreen", "darkgrey","firebrick"), name="Spectrum")+
+  scale_linetype_manual(values=c("dotdash", rep("solid", 4)), name="Spectrum")+
+  scale_y_continuous(labels=seq(0,1,0.1), breaks=seq(0,10000,1000))+
+  theme_bw()+
+  theme(panel.grid=element_blank())+
+  labs(x="Wavelength (nm)", y="Reflectance")
+
+
 #############################################################################
 # 2) Generate synthetic training data using the spectral library
 #############################################################################
@@ -116,6 +177,16 @@ synthMix <- function(
   return(ds_training)
   
 }
+
+sli$band <- c(1:10)
+
+mix_NPV <- synthMix(sli[1:5], 
+                    n_mix=1000, 
+                    mix_complexity=(c(2,3)),
+                    mix_likelihood=c(0.5, 0.5),
+                    target_class = "NPV",
+                    other_classes = c("PV", "soil"))
+
 
 
 #############################################################################
