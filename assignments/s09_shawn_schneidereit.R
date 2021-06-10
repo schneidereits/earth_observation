@@ -16,7 +16,8 @@ lapply(pck_list, require, character.only = TRUE)
 #############################################################################
 
 library(readr)
-sli <- read_csv("data/gcg_eo_s09/S2_EM.txt")
+sli <- read.csv("data/gcg_eo_s09/S2_EM.txt")
+sli_snythmix <- sli
 head(sli)
 sli$wavelength <- c(493, 560, 665, 704, 740, 783, 883, 865, 1610, 2190)
 sli_long <- sli %>% 
@@ -178,14 +179,27 @@ synthMix <- function(
   
 }
 
-sli$band <- c(1:10)
 
-mix_NPV <- synthMix(sli[1:5], 
+mix_NPV <- synthMix(sli_snythmix, 
                     n_mix=1000, 
                     mix_complexity=(c(2,3)),
                     mix_likelihood=c(0.5, 0.5),
                     target_class = "NPV",
-                    other_classes = c("PV", "soil"))
+                    other_classes = c("PV", "soil","shade"))
+
+mix_PV <- synthMix(sli_snythmix, 
+                    n_mix=1000, 
+                    mix_complexity=(c(2,3)),
+                    mix_likelihood=c(0.5, 0.5),
+                    target_class = "PV",
+                    other_classes = c("NPV", "soil","shade"))
+
+mix_soil <- synthMix(sli_snythmix, 
+                   n_mix=1000, 
+                   mix_complexity=(c(2,3)),
+                   mix_likelihood=c(0.5, 0.5),
+                   target_class = "soil",
+                   other_classes = c("NPV", "PV","shade"))
 
 
 
@@ -193,10 +207,164 @@ mix_NPV <- synthMix(sli[1:5],
 # 3) Modeling fractional cover
 #############################################################################
 
+# What do the parameters mean?
 
+# Gamma defines the curvature allowed to be assumed by the vector line
+# used by the SVM to fit the training data
+
+# The cost parameter defines the weighted cost of missclassifing a point, 
+# and thus determines the stringency/margin of error that can be tolerated. 
+
+# Epsilon defines a "buffer" a range at which errors can be included in the
+# SVM, before a cost penalty is applied
+
+library(e1071)
+
+# Define accuracy from 10-fold cross-validation as optimization measure
+cv <- tune.control(cross = 10) 
+
+# Use tune.svm() for a grid search of the gamma and cost parameters
+
+svm_test_NPV <- svm(fraction~., 
+           data = mix_NPV, 
+           kernel = 'radial',
+           gamma = 1, 
+           cost = 1, 
+           epsilon = 0.001,
+           tunecontrol = cv)
+
+svm_test_PV <- svm(fraction~., 
+                    data = mix_PV, 
+                    kernel = 'radial',
+                    gamma = 1, 
+                    cost = 1, 
+                    epsilon = 0.001,
+                    tunecontrol = cv)
+
+svm_test_soil <- svm(fraction~., 
+                    data = mix_soil, 
+                    kernel = 'radial',
+                    gamma = 1, 
+                    cost = 1, 
+                    epsilon = 0.001,
+                    tunecontrol = cv)
+
+svm.tune <- tune.svm(fraction~., 
+                     data = mix_NPV, 
+                     kernel = 'radial', 
+                     gamma = (0.01:100), 
+                     cost = 10^(-2:2), 
+                     epsilon = 0.001,
+                     tunecontrol = cv)
+
+# Store the best model in a new object
+svm.best <- svm.tune$best.model
+
+# Which parameters performed best?
+print(svm.best$gamma)
+print(svm.best$cost)
+
+s2 <- stack("data/gcg_eo_s09/2018-2019_091-319_HL_TSA_SEN2L_TSS_20190726_SEN2A_crop.tif")
+names(s2) <- paste("B", seq(1,10), sep="")
+plot(s2)
+
+prediction_NPV <- predict(s2, svm_test_NPV)
+plot(prediction_NPV)
+
+prediction_PV <- predict(s2, svm_test_PV)
+plot(prediction_PV)
+
+prediction_soil <- predict(s2, svm_test_soil)
+plot(prediction_soil)
+
+writeRaster(prediction_NPV, "data/gcg_eo_s09/prediction_NPV.tif", 
+            datatype="INT1S", 
+            overwrite=T)
+
+# Based on this, can you identify fields in different stages of the crop 
+# phenology?
+
+# Based on this we can only easy identify crops in the senescence phenological
+# stage, or that have already been harvested. The other colored areas could be a 
+# mix of soil or photosynthetic vegetation. 
+  
+  
 #############################################################################
 # 4) Evaluation of fractional cover
 #############################################################################
+
+reference_data <- readOGR("data/gcg_eo_s09/s09_validation/Validation_scaled_20190726.shp")
+prediction_stack <-  (stack(c(prediction_NPV, prediction_PV, prediction_soil)))
+plot(prediction_stack)
+
+# extracting our reference data points from prediction_NPV
+predictions_stack <- raster::extract(prediction_stack, reference_data, sp=TRUE)
+# nothing is negative or above one, so no adjustemts are needed here
+predictions_df <- as.data.frame(predictions_stack) %>% 
+  rename(NPV_predict = layer.1,
+         PV_predict = layer.2,
+         soil_predict = layer.3) %>% 
+  mutate(total_cover = NPV_predict + PV_predict + soil_predict)
+
+p1 <- ggplot(predictions_df, aes(NPV_predict, NPV_val)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1)
+
+p2 <- ggplot(predictions_df, aes(PV_predict, PV_val)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1)
+
+p3 <- ggplot(predictions_df, aes(soil_predict, soil_val)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1)
+
+library("gridExtra") 
+grid.arrange(p1,p2,p3)
+
+# Function that returns Root Mean Squared Error
+rmse <- function(error)
+{
+  sqrt(mean(error^2))
+}
+
+# Function that returns Mean Absolute Error
+mae <- function(error)
+{
+  mean(abs(error))
+}
+
+m1 <- lm(data = predictions_df, NPV_val ~ NPV_predict)
+summary(m1)
+# R2 0.6431 
+error <- predictions_df$NPV_val - predictions_df$NPV_predict
+error <-  na.omit(error)
+unique(is.na(error))
+
+(mae <- abs(mean(error))) #0.01277667
+
+(rmse <- sqrt(mean(error^2))) # 0.1276346
+
+m2 <- lm(data = predictions_df, PV_val ~ PV_predict)
+summary(m2)
+# R2 0.8933 
+error <- predictions_df$PV_val - predictions_df$PV_predict
+error <-  na.omit(error)
+unique(is.na(error))
+
+(mae <- abs(mean(error))) #0.03547932
+
+(rmse <- sqrt(mean(error^2))) # 0.09200218
+
+m3 <- lm(data = predictions_df, soil_val ~ soil_predict)
+summary(m3)
+# R2 0.6522 
+error <- predictions_df$soil_val - predictions_df$soil_predict
+error <-  na.omit(error)
+unique(is.na(error))
+
+(mae <- abs(mean(error))) #0.1728898
+
+(rmse <- sqrt(mean(error^2))) # 0.2090371
 
 # You can use this function to calculate the simple linear regression coefficients 
 # of observed and predicted data and annotate it in your plots
@@ -217,3 +385,9 @@ get_density <- function(x, y,...) { # set x and y to predicted and observed valu
   ii <- cbind(ix, iy)
   return(dens$z[ii])
 }
+
+lm_eqn(predictions_df$NPV_predict, predictions_df$NPV_val, predictions_df)
+
+get_density()
+
+
